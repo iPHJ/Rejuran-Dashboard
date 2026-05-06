@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파마리서치 디지털 캠페인 리포트 | W1~W2 | 2026-04-27</title>
+<style>
+:root {
+  --bg: #f4f6fa;
+  --white: #fff;
+  --s2: #f8f9fb;
+  --border: #e2e8f0;
+  --text: #1a1f36;
+  --text2: #475569;
+  --text3: #94a3b8;
+  /* 3색 체계 */
+  --blue: #3a6cf4;
+  --green: #0ca86f;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --slate: #64748b;
+  /* 미디어 색상 → 파랑 계열 단일화 */
+  --google: #3a6cf4;
+  --meta: #5b8af4;
+  --tiktok: #475569;
+  --tving: #f59e0b;
+  --naver: #0ca86f;
+  --netflix: #ef4444;
+  /* alias */
+  --teal: #3a6cf4;
+  --purple: #3a6cf4;
+  --coral: #f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);font-size:13px;min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+.hdr{background:#fff;border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.hdr-logo{font-weight:800;font-size:15px;color:var(--text);padding:14px 20px 14px 0;border-right:1px solid var(--border);margin-right:20px;letter-spacing:-.3px}
+.hdr-logo span{color:var(--blue)}
+.htabs{display:flex;gap:4px}
+.tbtn{padding:10px 18px;border:none;background:none;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text3);border-radius:6px;transition:all .2s}
+.tbtn:hover{background:var(--bg);color:var(--text)}
+.tbtn.active{background:var(--blue);color:#fff}
+.hdr-date{margin-left:auto;font-size:11.5px;color:var(--text3)}
+
+/* Main */
+.main{max-width:1440px;margin:0 auto;padding:24px 24px 60px}
+.panel{display:none}
+.panel.active{display:block}
+
+/* Section header */
+.sec{display:flex;align-items:center;gap:10px;margin:28px 0 14px}
+.sec h2{font-size:14px;font-weight:700;color:var(--text)}
+.sbadge{padding:3px 9px;border-radius:20px;font-size:10.5px;font-weight:600;background:var(--blue);color:#fff}
+.sbadge.g{background:var(--green)}
+.sbadge.a{background:var(--amber)}
+.sbadge.r{background:var(--red)}
+.sbadge.t{background:var(--teal)}
+
+/* KPI Cards */
+.krow{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:8px}
+.kpi{background:var(--white);border-radius:10px;padding:16px 18px;border:1px solid var(--border);position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi.cb::before{background:var(--blue)}
+.kpi.cg::before{background:var(--green)}
+.kpi.ct::before{background:var(--teal)}
+.kpi.ca::before{background:var(--amber)}
+.kpi.cp::before{background:var(--blue)}
+.kpi.cc::before{background:var(--amber)}
+.kpi .lbl{font-size:10.5px;color:var(--text3);font-weight:500;margin-bottom:6px}
+.kpi .val{font-size:20px;font-weight:800;color:var(--text);line-height:1.1;letter-spacing:-.5px}
+.kpi .sub{display:flex;align-items:center;gap:6px;margin-top:6px}
+.kpi .ach{font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:10px}
+.kpi .ach.g{background:#ecfdf5;color:var(--green)}
+.kpi .ach.b{background:#eff6ff;color:var(--blue)}
+.kpi .ach.a{background:#fffbeb;color:var(--amber)}
+.kpi .ach.r{background:#fef2f2;color:var(--red)}
+.kpi .note{font-size:10px;color:var(--text3)}
+
+/* Media Mix */
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.card{background:var(--white);border-radius:10px;border:1px solid var(--border);padding:18px 20px}
+.card.full{grid-column:1/-1}
+.card-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:14px}
+
+/* Progress bar */
+.mbr{display:grid;grid-template-columns:120px 1fr 52px 72px;align-items:center;gap:8px;margin-bottom:9px}
+.m-lbl{font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{background:#eef0f5;border-radius:20px;height:8px;overflow:hidden}
+.bf{height:100%;border-radius:20px;transition:width 0.8s cubic-bezier(.4,0,.2,1);width:0}
+.bf.good{background:var(--green)}
+.bf.ok{background:var(--blue)}
+.bf.warn{background:var(--amber)}
+.bf.bad{background:var(--red)}
+.m-pct{font-size:11px;font-weight:700;text-align:right}
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.pill.pg{background:#ecfdf5;color:var(--green)}
+.pill.pb{background:#eff6ff;color:var(--blue)}
+.pill.pa{background:#fffbeb;color:var(--amber)}
+.pill.pr{background:#fef2f2;color:var(--red)}
+
+/* Tables */
+.dt{width:100%;border-collapse:collapse;font-size:11.5px}
+.dt th{background:#f4f6fb;color:var(--text2);font-weight:600;padding:8px 10px;text-align:right;border-bottom:2px solid var(--border);white-space:nowrap}
+.dt th:first-child,.dt th:nth-child(2){text-align:left}
+.dt td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--border);color:var(--text);font-variant-numeric:tabular-nums}
+.dt td:first-child,.dt td:nth-child(2){text-align:left}
+.dt tr:hover td{background:#f8f9fb}
+.tot td{background:#eff6ff!important;font-weight:700;color:var(--blue)}
+.wkl td{background:#fefce8!important;font-weight:600}
+.wk td{background:#f0fdf4!important;font-weight:700;color:var(--green)}
+.up{color:var(--green);font-weight:600}
+.dn{color:var(--red);font-weight:600}
+.neu{color:var(--text3)}
+
+/* Note box */
+.note{border-radius:8px;padding:10px 14px;font-size:11px;line-height:1.6;margin-top:10px}
+.note.ng{border-left:3px solid var(--green);background:#f0fdf4;color:#166534}
+.note.nb{border-left:3px solid var(--blue);background:#eff6ff;color:#1e40af}
+.note.na{border-left:3px solid var(--amber);background:#fffbeb;color:#92400e}
+
+/* Media tabs */
+.mtabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:14px;background:var(--bg);padding:6px;border-radius:8px}
+.mtab{padding:7px 14px;border:none;background:none;cursor:pointer;font-size:11.5px;font-weight:600;color:var(--text3);border-radius:6px;transition:all .15s}
+.mtab:hover{color:var(--text);background:#fff}
+.mtab.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.mpanel{display:none}
+.mpanel.active{display:block}
+.sub-tabs{display:flex;gap:2px;margin-bottom:12px;flex-wrap:wrap}
+.stab{padding:5px 12px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-size:11px;font-weight:500;color:var(--text3);border-radius:5px;transition:all .15s}
+.stab:hover{color:var(--text);border-color:var(--blue)}
+.stab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.spanel{display:none}
+.spanel.active{display:block}
+
+/* Insight cards */
+.irow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.ins{border-radius:10px;padding:16px 18px;border:1px solid}
+.ins.i1{background:#f0fdf4;border-color:#bbf7d0}
+.ins.i2{background:#fffbeb;border-color:#fde68a}
+.ins.i3{background:#fef2f2;border-color:#fecaca}
+.ins.i4{background:#eff6ff;border-color:#bfdbfe}
+.ins .i-tag{font-size:10px;font-weight:800;letter-spacing:.5px;margin-bottom:8px}
+.ins.i1 .i-tag{color:var(--green)}
+.ins.i2 .i-tag{color:var(--amber)}
+.ins.i3 .i-tag{color:var(--red)}
+.ins.i4 .i-tag{color:var(--blue)}
+.ins .i-title{font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:6px}
+.ins .i-body{font-size:11px;color:var(--text2);line-height:1.65}
+.ins .i-action{margin-top:8px;font-size:10.5px;font-weight:600;color:var(--blue);padding-top:8px;border-top:1px solid rgba(0,0,0,.08)}
+
+/* Comment block */
+.cmt-block{background:var(--white);border-radius:12px;border:1px solid var(--border);margin-top:24px;overflow:hidden}
+.cmt-brand-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(135deg,#1b1f2e,#2d3555);color:#fff}
+.cmt-brand-hd h3{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.cmt-brand-dot{width:10px;height:10px;border-radius:50%;background:var(--blue)}
+.cmt-brand-period{font-size:11px;color:rgba(255,255,255,.6)}
+.cmt-chapter{padding:10px 20px;background:#f4f6fb;font-size:11.5px;font-weight:700;color:var(--text2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.cmt-chapter-num{background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.cmt-grid{display:grid;gap:0;padding:16px 20px}
+.cmt-card{background:var(--s2);border-radius:8px;padding:13px 15px;border:1px solid var(--border)}
+.cmt-media-tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;margin-bottom:9px;padding:3px 8px;border-radius:4px;background:#fff;border:1px solid var(--border)}
+.cmt-media-tag::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--blue)}
+.cmt-media-tag.google::before{background:var(--google)}
+.cmt-media-tag.meta::before{background:var(--meta)}
+.cmt-media-tag.tiktok::before{background:#e0e0e0}
+.cmt-media-tag.tving::before{background:var(--tving)}
+.cmt-media-tag.naver::before{background:var(--naver)}
+.cmt-media-tag.netflix::before{background:var(--netflix)}
+.cmt-kpi-row{display:flex;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.cmt-kpi-item .ck{font-size:9px;color:var(--text3);font-weight:500;display:block;margin-bottom:2px}
+.cmt-kpi-item .cv{font-size:12px;font-family:monospace;font-weight:700;color:var(--text)}
+.cmt-p{font-size:11px;color:var(--text2);line-height:1.65;margin-bottom:6px}
+.cmt-act{font-size:10.5px;font-weight:600;color:var(--blue);padding:6px 10px;background:#eff6ff;border-radius:5px;margin-top:4px}
+.cmt-act + .cmt-act{margin-top:4px}
+.cmt-row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 20px}
+.cmt-sub-hd{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:8px}
+
+/* 2-col grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* Media color dots */
+.dot-yt{width:8px;height:8px;background:var(--google);border-radius:50%;display:inline-block}
+.dot-meta{width:8px;height:8px;background:var(--meta);border-radius:50%;display:inline-block}
+.dot-tk{width:8px;height:8px;background:#888;border-radius:50%;display:inline-block}
+.dot-tv{width:8px;height:8px;background:var(--tving);border-radius:50%;display:inline-block}
+.dot-nv{width:8px;height:8px;background:var(--naver);border-radius:50%;display:inline-block}
+.dot-nf{width:8px;height:8px;background:var(--netflix);border-radius:50%;display:inline-block}
+
+/* Email section */
+
+/* Stat highlight */
+.stat-hi{background:#f0f7ff;border-radius:6px;padding:2px 6px;font-weight:700;color:var(--blue);font-size:inherit}
+
+/* Week badge */
+.wkbadge{display:inline-block;padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700;background:#eff6ff;color:var(--blue)}
+.wkbadge.w1{background:#fef3c7;color:#b45309}
+.wkbadge.new{background:#ecfdf5;color:var(--green)}
+
+/* Divider */
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+/* Notice */
+.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:11px;color:#92400e;margin-bottom:16px}
+
+/* TV Panel specifics */
+.tv-krow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+.tv-krow2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px}
+.kpi.ctv::before{background:var(--blue)}
+.tag-golf{background:#fef3c7;color:#92400e;border:1px solid #fde68a;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.tag-gen{background:#eff6ff;color:var(--blue);border:1px solid #bfdbfe;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.tag-bonus{background:#f0fdf4;color:var(--green);border:1px solid #bbf7d0;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;font-size:9.5px}
+.data-lag-note{background:#f8faff;border:1px solid #c7d7fd;border-radius:8px;padding:10px 14px;font-size:11px;color:#3730a3;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.tv-divider{border:none;border-top:2px solid var(--border);margin:28px 0}
+
+/* ── 슬라이서 ───────────────────────────────── */
+.slicer-bar{display:flex;flex-wrap:wrap;gap:20px;padding:16px 18px;background:#f8f9fb;border-radius:10px;border:1px solid var(--border);margin-bottom:16px}
+.slicer-group{display:flex;flex-direction:column;gap:8px;min-width:0}
+.slicer-label{font-size:10.5px;font-weight:700;color:var(--text2);letter-spacing:.3px}
+.slicer-row{display:flex;flex-wrap:wrap;gap:6px}
+.sl-btn{padding:5px 13px;border:1.5px solid var(--border);background:var(--white);cursor:pointer;font-size:11.5px;font-weight:500;color:var(--text2);border-radius:20px;transition:all .18s;line-height:1.4;white-space:nowrap}
+.sl-btn:hover{border-color:var(--blue);color:var(--blue);background:#f0f5ff}
+.sl-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:600}
+.sl-btn.multi-active{background:#dbeafe;color:var(--blue);border-color:var(--blue);font-weight:600}
+.sl-btn.reset{background:#f1f5f9;color:var(--text2);border-color:var(--border);margin-left:6px}
+.sl-btn.reset:hover{background:#fee2e2;color:var(--red);border-color:var(--red)}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dig_data.js"></script>
+  <script src="tv_data.js"></script>
+  <script src="bs_raw.js"></script>
+  <script src="bs_elem.js"></script>
+</head>
+<body>
+
+<!-- Header -->
+<div class="hdr">
+  <div class="hdr-logo">파마리서치 <span>캠페인</span> 리포트</div>
+  <div class="htabs">
+    <button class="tbtn active" onclick="sMain('rz-main',this)">🌿 리쥬란 디지털</button>
+    <button class="tbtn" onclick="sMain('tv-main',this)">📺 리쥬란 TV</button>
+    <button class="tbtn" onclick="sMain('bs-main',this)">🔍 브랜드검색</button>
+  </div>
+  <div class="hdr-date">기준일: 2026-04-27 | 대행사: 덴츠</div>
+</div>
+
+<div class="main">
+
+<!-- ===================== REJURAN PANEL ===================== -->
+<div class="panel active" id="p-rz-main">
+
+  
+  <!-- ① KPI 카드 -->
+  <div class="sec"><h2>캠페인 전체 KPI 현황</h2><span class="sbadge">W1~W2 누적 (4/17~4/26)</span></div>
+  <div class="krow">
+    <div class="kpi cb">
+      <div class="lbl">총 노출수</div>
+      <div class="val">64,824,316</div>
+      <div class="sub">
+        <span class="ach a">계획대비 35.0%</span>
+        <span class="note">W1~W2 초기 집행</span>
+      </div>
+    </div>
+    <div class="kpi cg">
+      <div class="lbl">총 조회수</div>
+      <div class="val">17,733,825</div>
+      <div class="sub">
+        <span class="ach a">계획대비 28.5%</span>
+        <span class="note">동영상 매체 합산</span>
+      </div>
+    </div>
+    <div class="kpi ct">
+      <div class="lbl">총 클릭수</div>
+      <div class="val">45,998</div>
+      <div class="sub">
+        <span class="ach b">계획대비 22.5%</span>
+      </div>
+    </div>
+    <div class="kpi ca">
+      <div class="lbl">집행 비용</div>
+      <div class="val">₩276.1M</div>
+      <div class="sub">
+        <span class="ach b">예산소진 15.5%</span>
+        <span class="note">총예산₩1,782M</span>
+      </div>
+    </div>
+    <div class="kpi cp">
+      <div class="lbl">통합 CPM</div>
+      <div class="val">₩4,260</div>
+      <div class="sub">
+        <span class="ach g">계획대비 55.6% ↓</span>
+        <span class="note">효율 개선</span>
+      </div>
+    </div>
+    <div class="kpi cc">
+      <div class="lbl">통합 CPV</div>
+      <div class="val">₩15.6</div>
+      <div class="sub">
+        <span class="ach g">계획대비 45.7% ↓</span>
+        <span class="note">효율 개선</span>
+      </div>
+    </div>
+  </div>
+  <div class="notice">⚠️ W1~W2는 캠페인 전체 플랜(약 70일) 대비 초기 10일 집행 수치입니다. 달성률 수치는 초기 집행 정상 범위로 해석하며, CPM·CPV 효율 지표를 우선 참고하시기 바랍니다.</div>
+
+
+  <!-- ③-0. 일별 성과 차트 -->
+  <div class="sec"><h2>일별 성과 추이</h2><span class="sbadge">매체별 · 통합 슬라이서</span></div>
+  <div class="card full" style="margin-bottom:16px">
+    <div class="slicer-bar">
+      <div class="slicer-group">
+        <div class="slicer-label">지표 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="dig-metric-slicer">
+          <button class="sl-btn active" onclick="digToggle('metric','imps',this)">노출수</button>
+          <button class="sl-btn" onclick="digToggle('metric','vtr',this)">VTR</button>
+          <button class="sl-btn" onclick="digToggle('metric','ctr',this)">CTR</button>
+          <button class="sl-btn" onclick="digToggle('metric','cpm',this)">CPM</button>
+          <button class="sl-btn reset" onclick="digReset('metric')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">매체 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="dig-media-slicer">
+          <button class="sl-btn active" onclick="digToggle('media','통합',this)">통합</button>
+          <button class="sl-btn" onclick="digToggle('media','유튜브',this)">유튜브</button>
+          <button class="sl-btn" onclick="digToggle('media','인스타그램',this)">인스타그램</button>
+          <button class="sl-btn" onclick="digToggle('media','틱톡',this)">틱톡</button>
+          <button class="sl-btn" onclick="digToggle('media','네이버',this)">네이버</button>
+          <button class="sl-btn" onclick="digToggle('media','티빙',this)">티빙</button>
+          <button class="sl-btn" onclick="digToggle('media','넷플릭스',this)">넷플릭스</button>
+          <button class="sl-btn reset" onclick="digReset('media')">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;height:230px"><canvas id="cDigDaily"></canvas></div>
+    <div class="note nb" style="margin-top:10px">📌 4/20 네이버 시작으로 노출 급증. VTR 선택 시 티빙(95%+)·유튜브(61~78%) 매체별 특성 확인. CPM은 네이버(₩928~1,114) 최저. 넷플릭스·VRC는 4/23~4/24부터 데이터 시작.</div>
+  </div>
+
+
+  <!-- ② Media Mix 달성률 -->
+  <div class="sec"><h2>Media Mix 달성률</h2><span class="sbadge g">노출·예산 기준</span></div>
+  <div class="gg">
+    <!-- 노출 달성률 -->
+    <div class="card">
+      <div class="card-title">📡 매체별 노출 달성률 (W1~W2 / 전체 플랜)</div>
+      <div class="mbr"><span class="m-lbl">유튜브</span><div class="bar-track"><div class="bf ok" style="width:28.3%"></div></div><span class="m-pct" style="color:var(--blue)">28.3%</span><span class="pill pb">진행중</span></div>
+      <div class="mbr"><span class="m-lbl">티빙</span><div class="bar-track"><div class="bf ok" style="width:21.7%"></div></div><span class="m-pct" style="color:var(--blue)">21.7%</span><span class="pill pb">진행중</span></div>
+      <div class="mbr"><span class="m-lbl">넷플릭스</span><div class="bar-track"><div class="bf ok" style="width:5.8%"></div></div><span class="m-pct" style="color:var(--blue)">5.8%</span><span class="pill pa">4/23집행</span></div>
+      <div class="mbr"><span class="m-lbl">인스타그램</span><div class="bar-track"><div class="bf ok" style="width:14.3%"></div></div><span class="m-pct" style="color:var(--blue)">14.3%</span><span class="pill pb">진행중</span></div>
+      <div class="mbr"><span class="m-lbl">틱톡</span><div class="bar-track"><div class="bf ok" style="width:46.3%"></div></div><span class="m-pct" style="color:var(--blue)">46.3%</span><span class="pill pg">초과달성</span></div>
+      <div class="mbr"><span class="m-lbl">네이버 지도앱</span><div class="bar-track"><div class="bf good" style="width:84.0%"></div></div><span class="m-pct" style="color:var(--green)">84.0%</span><span class="pill pg">1주완료</span></div>
+      <div class="note na" style="margin-top:12px">📌 W1~W2는 전체 캠페인 플랜(4/17~6월중순) 대비 약 14% 기간 집행 수치. 초기 집행 정상 수준으로 해석 권장. 넷플릭스는 4/23 집행 시작(기간 내 정상).</div>
+    </div>
+    <!-- 예산 소진률 -->
+    <div class="card">
+      <div class="card-title">💰 매체별 예산 소진률 (집행비/예산)</div>
+      <div class="mbr"><span class="m-lbl">유튜브</span><div class="bar-track"><div class="bf ok" style="width:20.9%"></div></div><span class="m-pct" style="color:var(--blue)">20.9%</span><span class="pill pb">정상</span></div>
+      <div class="mbr"><span class="m-lbl">티빙</span><div class="bar-track"><div class="bf ok" style="width:14.8%"></div></div><span class="m-pct" style="color:var(--blue)">14.8%</span><span class="pill pb">정상</span></div>
+      <div class="mbr"><span class="m-lbl">넷플릭스</span><div class="bar-track"><div class="bf ok" style="width:5.8%"></div></div><span class="m-pct" style="color:var(--blue)">5.8%</span><span class="pill pa">4/23시작</span></div>
+      <div class="mbr"><span class="m-lbl">인스타그램</span><div class="bar-track"><div class="bf ok" style="width:15.1%"></div></div><span class="m-pct" style="color:var(--blue)">15.1%</span><span class="pill pb">정상</span></div>
+      <div class="mbr"><span class="m-lbl">틱톡</span><div class="bar-track"><div class="bf ok" style="width:16.3%"></div></div><span class="m-pct" style="color:var(--blue)">16.3%</span><span class="pill pb">정상</span></div>
+      <div class="mbr"><span class="m-lbl">네이버 지도앱</span><div class="bar-track"><div class="bf good" style="width:100%"></div></div><span class="m-pct" style="color:var(--green)">100%</span><span class="pill pg">1주완료</span></div>
+      <div class="note ng" style="margin-top:12px">✅ 네이버 지도앱 스플래시는 1주 패키지 완료 (₩35,000,000 소진). 카카오·강남언니·바비톡은 5/1~ 집행 예정으로 현재 미소진 정상.</div>
+    </div>
+  </div>
+
+  <!-- Media Mix 종합 테이블 -->
+  <div class="card full" style="margin-bottom:16px">
+    <div class="card-title">📊 Media Mix 종합 성과 테이블 (W1~W2 누적)</div>
+    <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr>
+        <th>매체</th><th>예산 (원)</th><th>집행비</th><th>소진률</th>
+        <th>예상노출</th><th>실적노출</th><th>노출달성</th>
+        <th>실적조회</th><th>CPM</th><th>CPV</th><th>종합판단</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>유튜브</td><td>550,000,000</td><td>115,011,494</td><td>20.9%</td><td>72,170,349</td><td>20,431,443</td><td>28.3%</td><td>12,340,270</td><td>₩5,629</td><td>₩9.3</td><td><span class="pill pg">효율 양호</span></td></tr>
+        <tr><td>티빙</td><td>385,300,000</td><td>57,000,295</td><td>14.8%</td><td>19,175,439</td><td>4,153,398</td><td>21.7%</td><td>3,970,275</td><td>₩13,724</td><td>₩14.4</td><td><span class="pill pb">정상</span></td></tr>
+        <tr><td>넷플릭스</td><td>400,000,000</td><td>23,096,670</td><td>5.8%</td><td>21,307,941</td><td>1,228,471</td><td>5.8%</td><td>723,983</td><td>₩18,801</td><td>₩31.9</td><td><span class="pill pb">초기 집행</span></td></tr>
+        <tr><td>인스타그램</td><td>250,000,000</td><td>37,871,776</td><td>15.1%</td><td>14,532,236</td><td>2,072,255</td><td>14.3%</td><td>491,074</td><td>₩18,276</td><td>₩77.1</td><td><span class="pill pb">정상</span></td></tr>
+        <tr><td>틱톡</td><td>50,000,000</td><td>8,166,806</td><td>16.3%</td><td>4,471,752</td><td>2,070,056</td><td>46.3%</td><td>208,223</td><td>₩3,945</td><td>₩39.2</td><td><span class="pill pg">CPM 최저</span></td></tr>
+        <tr><td>네이버 지도앱</td><td>35,000,000</td><td>35,000,000</td><td>100%</td><td>31,500,000</td><td>34,868,693</td><td>110.7%</td><td>-</td><td>₩1,004</td><td>-</td><td><span class="pill pg">초과달성 🟢</span></td></tr>
+        <tr style="background:#faf5ff"><td>카카오</td><td>28,000,000</td><td>0</td><td>0%</td><td>12,000,000</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td><span class="pill pa">5/1 집행예정</span></td></tr>
+        <tr style="background:#faf5ff"><td>강남언니</td><td>25,714,286</td><td>0</td><td>0%</td><td>-</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td><span class="pill pa">5/1 집행예정</span></td></tr>
+        <tr style="background:#faf5ff"><td>바비톡</td><td>12,857,143</td><td>0</td><td>0%</td><td>360,000</td><td>0</td><td>-</td><td>-</td><td>-</td><td>-</td><td><span class="pill pa">4/27 집행예정</span></td></tr>
+        <tr class="tot"><td>🏁 GRAND TOTAL</td><td>1,781,671,429</td><td>276,147,040</td><td>15.5%</td><td>185,517,717</td><td>64,824,316</td><td>35.0%</td><td>17,733,825</td><td>₩4,260</td><td>₩15.6</td><td><span class="pill pg">CPM/CPV 효율</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+  <!-- ③ 주차별 매체 추이 -->
+  <div class="sec"><h2>주차별 매체 운영 추이</h2><span class="sbadge t">W1 vs W2</span></div>
+  <div class="card full" style="margin-bottom:16px">
+    <div class="card-title">📅 주차별 매체별 노출·CPM 추이 (W1: 4/17~4/22 / W2: 4/23~4/26)</div>
+    <div class="tbl-wrap">
+    <table class="dt">
+      <thead><tr>
+        <th>매체</th><th>W1 노출</th><th>W1 CPM</th><th>W2 노출</th><th>W2 CPM</th><th>노출 WoW</th><th>CPM WoW</th><th>비고</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span class="dot-yt"></span> 유튜브</td><td>10,503,470</td><td>₩5,845</td><td>9,927,973</td><td>₩5,389</td><td class="dn">-5.5%</td><td class="up">-₩456 ↓효율↑</td><td>W2 VRC 추가 집행</td></tr>
+        <tr><td><span class="dot-tv"></span> 티빙</td><td>2,198,455</td><td>₩15,282</td><td>1,954,943</td><td>₩12,033</td><td class="dn">-11.1%</td><td class="up">-₩3,249 ↓효율↑</td><td>KBO 편성 영향</td></tr>
+        <tr><td><span class="dot-nf"></span> 넷플릭스</td><td>0</td><td>-</td><td>1,228,471</td><td>₩18,801</td><td>-</td><td>-</td><td>4/23 집행 시작</td></tr>
+        <tr><td><span class="dot-meta"></span> 인스타그램</td><td>1,049,483</td><td>₩18,906</td><td>1,022,772</td><td>₩17,634</td><td class="dn">-2.5%</td><td class="up">-₩1,272 ↓효율↑</td><td>알고리즘 최적화</td></tr>
+        <tr><td><span class="dot-tk"></span> 틱톡</td><td>1,275,476</td><td>₩4,039</td><td>794,580</td><td>₩3,789</td><td class="dn">-37.7%</td><td class="up">-₩250 ↓효율↑</td><td>W2 일부 미집행</td></tr>
+        <tr><td><span class="dot-nv"></span> 네이버 지도앱</td><td>20,360,916</td><td>₩981</td><td>14,507,777</td><td>₩1,034</td><td class="dn">-28.7%</td><td class="dn">+₩53 ↑</td><td>4/20 시작, 4/26 완료</td></tr>
+        <tr class="tot"><td>전체</td><td>35,387,800</td><td>₩4,582</td><td>29,436,516</td><td>₩3,879</td><td class="dn">-16.8%</td><td class="up">-₩703 ↓효율↑</td><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="note nb">📌 W2는 4/23~4/26 (4일)이므로 절대 노출수는 W1(6일) 대비 낮게 나타남. 일평균 기준으로는 W2가 더 높은 노출량 유지. 넷플릭스 4/23 집행 시작으로 W2부터 매체 다각화 본격화.</div>
+  </div>
+
+  <!-- ④ 매체별 상세 탭 -->
+  <div class="sec"><h2>매체별 상세 분석</h2></div>
+  <div class="mtabs">
+    <button class="mtab active" onclick="sMedia('rz','google',this)">📺 유튜브</button>
+    <button class="mtab" onclick="sMedia('rz','meta',this)">📘 인스타그램</button>
+    <button class="mtab" onclick="sMedia('rz','tiktok',this)">🎵 틱톡</button>
+    <button class="mtab" onclick="sMedia('rz','tving',this)">🎬 티빙</button>
+    <button class="mtab" onclick="sMedia('rz','naver',this)">🗺 네이버 지도앱</button>
+    <button class="mtab" onclick="sMedia('rz','netflix',this)">🎥 넷플릭스</button>
+  </div>
+
+  <!-- 유튜브 탭 -->
+  <div class="mpanel active" id="rz-google">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-g','type',this)">지면별(AD Type)</button>
+      <button class="stab" onclick="sSub('rz-g','target',this)">타겟별</button>
+      <button class="stab" onclick="sSub('rz-g','creative',this)">소재별</button>
+      <button class="stab" onclick="sSub('rz-g','daily',this)">W1 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-g-type">
+      <div class="card">
+        <div class="card-title">유튜브 — AD Type별 Plan vs Actual</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>상품명</th><th>목적</th><th>타겟</th><th>예상노출</th><th>실적노출</th><th>달성률</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>NON-SKIP 논스킵</td><td>전체노출극대</td><td>MF2554</td><td>16,304,348</td><td>9,737,141</td><td>59.7%</td><td>8,315,837</td><td>2,122</td><td>₩51,470,429</td><td>₩5,286</td><td>₩6.2</td></tr>
+            <tr><td>VVC_F3554</td><td>타겟별 조회최적</td><td>F3554</td><td>20,143,421</td><td>3,820,037</td><td>19.0%</td><td>2,206,606</td><td>7,929</td><td>₩27,743,014</td><td>₩7,262</td><td>₩12.6</td></tr>
+            <tr><td>VVC_F2534</td><td>타겟별 조회최적</td><td>F2534</td><td>8,057,368</td><td>1,315,558</td><td>16.3%</td><td>726,134</td><td>2,778</td><td>₩11,072,389</td><td>₩8,416</td><td>₩15.2</td></tr>
+            <tr><td>VVC_M2544</td><td>타겟별 조회최적</td><td>M2544</td><td>8,057,368</td><td>1,642,984</td><td>20.4%</td><td>910,415</td><td>1,731</td><td>₩11,094,014</td><td>₩6,752</td><td>₩12.2</td></tr>
+            <tr><td>VRC 2.0</td><td>30s 브랜드노출</td><td>MF2554</td><td>19,607,843</td><td>3,915,723</td><td>20.0%</td><td>181,278</td><td>3,373</td><td>₩13,631,649</td><td>₩3,481</td><td>₩75.2</td></tr>
+            <tr class="tot"><td colspan="3">유튜브 합계</td><td>72,170,349</td><td>20,431,443</td><td>28.3%</td><td>12,340,270</td><td>17,933</td><td>₩115,011,494</td><td>₩5,629</td><td>₩9.3</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note nb">📌 논스킵과 VVC는 목적이 다른 별개 상품입니다. 논스킵은 전체 MF2554 노출 극대화, VVC는 타겟별(F3554/F2534/M2544) 조회 최적화 상품으로 수치를 분리하여 해석해야 합니다.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-g-target">
+      <div class="card">
+        <div class="card-title">유튜브 — 타겟별 성과</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>타겟</th><th>노출수</th><th>비중</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>F2554 (논스킵+VRC)</td><td>13,652,864</td><td>66.8%</td><td>8,497,115</td><td>5,495</td><td>₩65,102,077</td><td>₩4,768</td><td>₩7.7</td></tr>
+            <tr><td>F3554 (VVC)</td><td>3,820,037</td><td>18.7%</td><td>2,206,606</td><td>7,929</td><td>₩27,743,014</td><td>₩7,262</td><td>₩12.6</td></tr>
+            <tr><td>F2534 (VVC)</td><td>1,315,558</td><td>6.4%</td><td>726,134</td><td>2,778</td><td>₩11,072,389</td><td>₩8,416</td><td>₩15.2</td></tr>
+            <tr><td>M2544 (VVC)</td><td>1,642,984</td><td>8.0%</td><td>910,415</td><td>1,731</td><td>₩11,094,014</td><td>₩6,752</td><td>₩12.2</td></tr>
+            <tr class="tot"><td>합계</td><td>20,431,443</td><td>100%</td><td>12,340,270</td><td>17,933</td><td>₩115,011,494</td><td>₩5,629</td><td>₩9.3</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 F2554(MF2554)가 노출의 66.8% 담당. VVC 타겟 중 M2544의 CPM ₩6,752로 가장 효율적. F2534 CPM ₩8,416으로 가장 높으나 여전히 플랜(₩8,274) 수준.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-g-creative">
+      <div class="card">
+        <div class="card-title">유튜브 — 소재별 성과 (캠페인 기준)</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>캠페인명</th><th>노출수</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>[Non-skip] 리쥬란 본편</td><td>9,737,141</td><td>8,315,837</td><td>2,122</td><td>₩51,470,429</td><td>₩5,286</td><td>₩6.2</td></tr>
+            <tr><td>[VVC] 리쥬란 본편_F3554</td><td>3,820,037</td><td>2,206,606</td><td>7,929</td><td>₩27,743,014</td><td>₩7,262</td><td>₩12.6</td></tr>
+            <tr><td>[VVC] 리쥬란 본편_M2544</td><td>1,642,984</td><td>910,415</td><td>1,731</td><td>₩11,094,014</td><td>₩6,752</td><td>₩12.2</td></tr>
+            <tr><td>[VVC] 리쥬란 본편_F2534</td><td>1,315,558</td><td>726,134</td><td>2,778</td><td>₩11,072,389</td><td>₩8,416</td><td>₩15.2</td></tr>
+            <tr><td>[VRC] 리쥬란 본편_30s only</td><td>3,915,723</td><td>181,278</td><td>3,373</td><td>₩13,631,649</td><td>₩3,481</td><td>₩75.2</td></tr>
+            <tr class="tot"><td>합계</td><td>20,431,443</td><td>12,340,270</td><td>17,933</td><td>₩115,011,494</td><td>₩5,629</td><td>₩9.3</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-g-daily">
+      <div class="card">
+        <div class="card-title">유튜브 — W1 일별 추이 (4/17~4/26)</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr class="wkl"><td>4/17</td><td>금</td><td><span class="wkbadge w1">W1</span></td><td>1,371,518</td><td>845,899</td><td>2,500</td><td>₩10,121,870</td><td>₩7,381</td><td>₩11.97</td></tr>
+            <tr class="wkl"><td>4/18</td><td>토</td><td><span class="wkbadge w1">W1</span></td><td>1,654,939</td><td>1,165,440</td><td>1,802</td><td>₩10,154,180</td><td>₩6,137</td><td>₩8.71</td></tr>
+            <tr class="wkl"><td>4/19</td><td>일</td><td><span class="wkbadge w1">W1</span></td><td>1,734,008</td><td>1,236,018</td><td>1,475</td><td>₩10,137,650</td><td>₩5,846</td><td>₩8.20</td></tr>
+            <tr class="wkl"><td>4/20</td><td>월</td><td><span class="wkbadge w1">W1</span></td><td>1,745,701</td><td>1,333,275</td><td>1,501</td><td>₩10,125,010</td><td>₩5,800</td><td>₩7.59</td></tr>
+            <tr class="wkl"><td>4/21</td><td>화</td><td><span class="wkbadge w1">W1</span></td><td>1,643,782</td><td>1,288,092</td><td>1,090</td><td>₩10,142,450</td><td>₩6,170</td><td>₩7.87</td></tr>
+            <tr class="wkl"><td>4/22</td><td>수</td><td><span class="wkbadge w1">W1</span></td><td>1,659,719</td><td>1,288,547</td><td>1,151</td><td>₩10,108,900</td><td>₩6,091</td><td>₩7.85</td></tr>
+            <tr><td>4/23</td><td>목</td><td><span class="wkbadge new">W2</span></td><td>1,796,122</td><td>1,406,811</td><td>1,280</td><td>₩10,114,570</td><td>₩5,632</td><td>₩7.19</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>3,080,302</td><td>1,216,057</td><td>2,759</td><td>₩14,697,670</td><td>₩4,772</td><td>₩12.09</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>2,648,991</td><td>1,147,411</td><td>1,984</td><td>₩14,677,600</td><td>₩5,541</td><td>₩12.79</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>3,096,361</td><td>1,412,720</td><td>2,391</td><td>₩14,731,590</td><td>₩4,757</td><td>₩10.43</td></tr>
+            <tr class="tot"><td colspan="3">합계</td><td>20,431,443</td><td>12,340,270</td><td>17,933</td><td>₩115,011,490</td><td>₩5,629</td><td>₩9.33</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 W1 초반(4/17~4/19) CPM ₩7,381→₩5,846 빠른 하락은 알고리즘 학습 정상 과정. W2(4/24~) VRC 2.0 추가 집행으로 노출량이 급등(1.7M→3.0M)했으나 CPM은 ₩4,757로 오히려 개선. VRC는 노출 중심 상품으로 CPV는 참고치 수준.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 인스타그램 탭 -->
+  <div class="mpanel" id="rz-meta">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-m','type',this)">지면별(타겟별)</button>
+      <button class="stab" onclick="sSub('rz-m','daily',this)">W1 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-m-type">
+      <div class="card">
+        <div class="card-title">인스타그램(메타) — 타겟별 성과</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>타겟/광고그룹</th><th>노출수</th><th>비중</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>F3554 / 관심사</td><td>623,765</td><td>30.1%</td><td>155,111</td><td>2,134</td><td>₩12,754,424</td><td>₩20,447</td><td>₩82.2</td></tr>
+            <tr><td>F2534 / 관심사</td><td>456,433</td><td>22.0%</td><td>144,080</td><td>1,900</td><td>₩12,530,211</td><td>₩27,452</td><td>₩87.0</td></tr>
+            <tr><td>M2544 / 관심사</td><td>992,057</td><td>47.9%</td><td>191,883</td><td>2,472</td><td>₩12,587,140</td><td>₩12,688</td><td>₩65.6</td></tr>
+            <tr class="tot"><td>합계</td><td>2,072,255</td><td>100%</td><td>491,074</td><td>6,506</td><td>₩37,871,776</td><td>₩18,276</td><td>₩77.1</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note nb">📌 M2544(남성)이 노출의 47.9%를 담당하며 CPM ₩12,688로 가장 효율적. F2534 CPM ₩27,452로 가장 높아 소진 추이 점검 필요. 인스타그램 CPM은 플랜(₩13,800~₩27,446) 수준 정상 집행 중.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-m-daily">
+      <div class="card">
+        <div class="card-title">인스타그램 — W1~W2 일별 추이</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr class="wkl"><td>4/17</td><td>금</td><td><span class="wkbadge w1">W1</span></td><td>195,317</td><td>41,418</td><td>497</td><td>₩2,958,859</td><td>₩15,148</td><td>₩71.4</td></tr>
+            <tr class="wkl"><td>4/18</td><td>토</td><td><span class="wkbadge w1">W1</span></td><td>181,970</td><td>46,938</td><td>794</td><td>₩4,723,123</td><td>₩25,955</td><td>₩100.6</td></tr>
+            <tr class="wkl"><td>4/19</td><td>일</td><td><span class="wkbadge w1">W1</span></td><td>168,997</td><td>43,620</td><td>691</td><td>₩4,374,117</td><td>₩25,882</td><td>₩100.3</td></tr>
+            <tr class="wkl"><td>4/20</td><td>월</td><td><span class="wkbadge w1">W1</span></td><td>149,274</td><td>35,085</td><td>520</td><td>₩3,334,396</td><td>₩22,336</td><td>₩95.0</td></tr>
+            <tr class="wkl"><td>4/21</td><td>화</td><td><span class="wkbadge w1">W1</span></td><td>115,785</td><td>17,969</td><td>287</td><td>₩1,330,977</td><td>₩11,496</td><td>₩74.1</td></tr>
+            <tr class="wkl"><td>4/22</td><td>수</td><td><span class="wkbadge w1">W1</span></td><td>238,630</td><td>47,163</td><td>782</td><td>₩4,219,166</td><td>₩17,681</td><td>₩89.5</td></tr>
+            <tr><td>4/23</td><td>목</td><td><span class="wkbadge new">W2</span></td><td>245,041</td><td>47,605</td><td>774</td><td>₩4,220,400</td><td>₩17,223</td><td>₩88.7</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>225,095</td><td>46,033</td><td>750</td><td>₩4,227,111</td><td>₩18,780</td><td>₩91.8</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>324,185</td><td>87,564</td><td>785</td><td>₩4,266,157</td><td>₩13,159</td><td>₩48.7</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>227,961</td><td>77,679</td><td>626</td><td>₩4,217,470</td><td>₩18,501</td><td>₩54.3</td></tr>
+            <tr class="tot"><td colspan="3">합계</td><td>2,072,255</td><td>491,074</td><td>6,506</td><td>₩37,871,776</td><td>₩18,276</td><td>₩77.1</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note na">📌 4/21(화) 노출 115,785로 급락 후 4/22~ 회복. 주말(4/25~26) CPV ₩48~54로 크게 개선됨. 알고리즘 학습 및 소재 최적화 진행 중으로 W3~ 효율 개선 기대.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 틱톡 탭 -->
+  <div class="mpanel" id="rz-tiktok">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-tk','type',this)">지면별</button>
+      <button class="stab" onclick="sSub('rz-tk','daily',this)">W1 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-tk-type">
+      <div class="card">
+        <div class="card-title">틱톡 — 타겟별 성과</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>타겟/상품</th><th>노출수</th><th>비중</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>MF2554 / 동영상 조회</td><td>2,070,056</td><td>100%</td><td>208,223</td><td>3,648</td><td>₩8,166,806</td><td>₩3,945</td><td>₩39.2</td></tr>
+            <tr class="tot"><td>합계</td><td>2,070,056</td><td>100%</td><td>208,223</td><td>3,648</td><td>₩8,166,806</td><td>₩3,945</td><td>₩39.2</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 틱톡 CPM ₩3,945은 전 매체 중 최저 수준으로 노출 효율이 우수. 노출 달성률 46.3%로 플랜 대비 빠른 소진 추이. 플랜 대비 낮은 조회율은 틱톡 특성(6초 이상 조회 기준)상 정상 범위.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-tk-daily">
+      <div class="card">
+        <div class="card-title">틱톡 — W1~W2 일별 추이</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr class="wkl"><td>4/17</td><td>금</td><td><span class="wkbadge w1">W1</span></td><td>192,303</td><td>19,561</td><td>325</td><td>₩836,424</td><td>₩4,350</td><td>₩42.8</td></tr>
+            <tr class="wkl"><td>4/18</td><td>토</td><td><span class="wkbadge w1">W1</span></td><td>146,291</td><td>20,666</td><td>280</td><td>₩830,233</td><td>₩5,675</td><td>₩40.2</td></tr>
+            <tr class="wkl"><td>4/19</td><td>일</td><td><span class="wkbadge w1">W1</span></td><td>257,030</td><td>20,615</td><td>433</td><td>₩836,921</td><td>₩3,257</td><td>₩40.6</td></tr>
+            <tr class="wkl"><td>4/20</td><td>월</td><td><span class="wkbadge w1">W1</span></td><td>121,528</td><td>14,182</td><td>196</td><td>₩517,430</td><td>₩4,257</td><td>₩36.5</td></tr>
+            <tr class="wkl"><td>4/21</td><td>화</td><td><span class="wkbadge w1">W1</span></td><td>241,962</td><td>22,300</td><td>405</td><td>₩860,221</td><td>₩3,555</td><td>₩38.6</td></tr>
+            <tr class="wkl"><td>4/22</td><td>수</td><td><span class="wkbadge w1">W1</span></td><td>244,361</td><td>20,919</td><td>404</td><td>₩858,884</td><td>₩3,515</td><td>₩41.1</td></tr>
+            <tr><td>4/23</td><td>목</td><td><span class="wkbadge new">W2</span></td><td>222,591</td><td>21,067</td><td>409</td><td>₩861,501</td><td>₩3,870</td><td>₩40.9</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>171,537</td><td>22,718</td><td>336</td><td>₩857,324</td><td>₩4,999</td><td>₩37.7</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>169,047</td><td>22,611</td><td>308</td><td>₩847,783</td><td>₩5,015</td><td>₩37.5</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>303,406</td><td>23,584</td><td>552</td><td>₩860,083</td><td>₩2,834</td><td>₩36.5</td></tr>
+            <tr class="tot"><td colspan="3">합계</td><td>2,070,056</td><td>208,223</td><td>3,648</td><td>₩8,166,806</td><td>₩3,945</td><td>₩39.2</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 4/20(월) 노출 121,528 저조는 일별 예산 배분 알고리즘 조정 과정. 전체적으로 CPM ₩2,834~₩5,675 범위로 안정적 운영 중. W2(4/26) 노출 급증은 주말 인벤토리 확대 효과.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 티빙 탭 -->
+  <div class="mpanel" id="rz-tving">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-tv','type',this)">지면별(상품별)</button>
+      <button class="stab" onclick="sSub('rz-tv','daily',this)">W1 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-tv-type">
+      <div class="card">
+        <div class="card-title">티빙 — 상품별 성과 (Plan vs Actual)</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>상품명</th><th>예상노출</th><th>실적노출</th><th>달성률</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>KBO 노출 보장 PKG</td><td>11,842,105</td><td>3,244,353</td><td>27.4%</td><td>3,100,403</td><td>596</td><td>₩26,057,808</td><td>₩8,032</td><td>₩8.4</td></tr>
+            <tr><td>TW 오늘의 TOP 20</td><td>4,000,000</td><td>674,313</td><td>16.9%</td><td>651,501</td><td>1,627</td><td>₩16,858,339</td><td>₩25,001</td><td>₩25.9</td></tr>
+            <tr><td>하트시그널5 퍼스트 프리롤</td><td>3,333,333</td><td>234,732</td><td>7.0%</td><td>218,371</td><td>1,523</td><td>₩14,084,148</td><td>₩60,001</td><td>₩64.5</td></tr>
+            <tr class="tot"><td>티빙 합계</td><td>19,175,439</td><td>4,153,398</td><td>21.7%</td><td>3,970,275</td><td>3,746</td><td>₩57,000,295</td><td>₩13,724</td><td>₩14.4</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note na">📌 하트시그널5 CPM ₩60,001은 프리미엄 콘텐츠 고정 단가로 CPM 효율 비교 대상이 아님. KBO PKG가 전체 노출의 78.1% 담당하며 CPM ₩8,032로 가장 효율적. TOP20은 고정 단가 ₩25,000 정상 집행.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-tv-daily">
+      <div class="card">
+        <div class="card-title">티빙 — W1~W2 일별 추이</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>조회수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr class="wkl"><td>4/17</td><td>금</td><td><span class="wkbadge w1">W1</span></td><td>168,755</td><td>162,186</td><td>381</td><td>₩5,779,546</td><td>₩34,245</td><td>₩35.6</td></tr>
+            <tr class="wkl"><td>4/18</td><td>토</td><td><span class="wkbadge w1">W1</span></td><td>457,871</td><td>435,921</td><td>460</td><td>₩6,003,077</td><td>₩13,108</td><td>₩13.8</td></tr>
+            <tr class="wkl"><td>4/19</td><td>일</td><td><span class="wkbadge w1">W1</span></td><td>455,844</td><td>440,615</td><td>396</td><td>₩5,686,398</td><td>₩12,474</td><td>₩12.9</td></tr>
+            <tr class="wkl"><td>4/20</td><td>월</td><td><span class="wkbadge w1">W1</span></td><td>79,399</td><td>76,919</td><td>225</td><td>₩2,394,397</td><td>₩30,157</td><td>₩31.1</td></tr>
+            <tr class="wkl"><td>4/21</td><td>화</td><td><span class="wkbadge w1">W1</span></td><td>503,023</td><td>472,097</td><td>325</td><td>₩5,792,984</td><td>₩11,516</td><td>₩12.3</td></tr>
+            <tr class="wkl"><td>4/22</td><td>수</td><td><span class="wkbadge w1">W1</span></td><td>533,563</td><td>513,321</td><td>601</td><td>₩8,302,776</td><td>₩15,561</td><td>₩16.2</td></tr>
+            <tr><td>4/23</td><td>목</td><td><span class="wkbadge new">W2</span></td><td>515,947</td><td>492,538</td><td>426</td><td>₩6,406,493</td><td>₩12,418</td><td>₩13.0</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>495,923</td><td>474,558</td><td>312</td><td>₩5,689,070</td><td>₩11,470</td><td>₩12.0</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>469,944</td><td>448,883</td><td>316</td><td>₩5,525,187</td><td>₩11,757</td><td>₩12.3</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>473,129</td><td>453,237</td><td>304</td><td>₩5,420,367</td><td>₩11,455</td><td>₩11.9</td></tr>
+            <tr class="tot"><td colspan="3">합계</td><td>4,153,398</td><td>3,970,275</td><td>3,746</td><td>₩57,000,295</td><td>₩13,724</td><td>₩14.4</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note na">📌 4/17(금) 노출 168,755 저조 및 CPM ₩34,245 높음: 하트시그널5만 집행 시작 첫날. 4/20(월) 노출 79,399 급락: KBO 미경기일 영향(월요일 KBO 편성 없음). W2~ KBO 경기 편성 정상화로 일별 45~53만 안정적 유지.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 네이버 지도앱 탭 -->
+  <div class="mpanel" id="rz-naver">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-nv','type',this)">지면별(상품별)</button>
+      <button class="stab" onclick="sSub('rz-nv','daily',this)">W1 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-nv-type">
+      <div class="card">
+        <div class="card-title">네이버 지도앱 — 지면별 성과 (DA 기준)</div>
+        <div class="notice" style="margin-bottom:12px">📌 네이버 지도앱은 DA(Display Ad) 지면으로 조회수가 없습니다. 노출수·CPM·CPC 기준으로만 평가합니다.</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>지면명</th><th>집행기간</th><th>예산</th><th>집행비</th><th>노출수</th><th>달성률</th><th>클릭수</th><th>CPM</th><th>CPC</th></tr></thead>
+          <tbody>
+            <tr><td>스플래시 (1주)</td><td>4/20~4/26</td><td>₩26,000,000</td><td>₩26,000,000</td><td>22,200,855</td><td>111.0%</td><td>0</td><td>₩1,171</td><td>-</td></tr>
+            <tr><td>스마트채널(길찾기)</td><td>4/20~4/26</td><td>₩1,500,000</td><td>₩1,500,000</td><td>1,896,858</td><td>126.5%</td><td>2,733</td><td>₩791</td><td>₩549</td></tr>
+            <tr><td>스마트채널(검색대기)</td><td>4/20~4/26</td><td>₩7,500,000</td><td>₩7,500,000</td><td>10,770,980</td><td>107.7%</td><td>11,432</td><td>₩696</td><td>₩656</td></tr>
+            <tr class="tot"><td>합계</td><td>4/20~4/26</td><td>₩35,000,000</td><td>₩35,000,000</td><td>34,868,693</td><td>110.7%</td><td>14,165</td><td>₩1,004</td><td>₩2,471</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">🟢 스플래시 1주 패키지 완료. 노출 2,200만으로 플랜 대비 111% 초과달성. 스마트채널 두 지면 모두 플랜 초과달성. 네이버 더블크라운(5/1 집행 예정)은 별도로 관리됩니다.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-nv-daily">
+      <div class="card">
+        <div class="card-title">네이버 지도앱 — W1 일별 추이 (4/20~4/26, DA 지면)</div>
+        <div class="notice" style="margin-bottom:12px">📌 네이버 지도앱은 4/17~4/19 미집행 (스플래시 패키지 4/20 시작)</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>클릭수</th><th>비용</th><th>CPM</th><th>CPC</th></tr></thead>
+          <tbody>
+            <tr style="background:#f1f5f9"><td>4/17</td><td>금</td><td><span class="wkbadge w1">W1</span></td><td colspan="5" style="text-align:center;color:var(--text3)">미집행 (스플래시 패키지 4/20 시작)</td></tr>
+            <tr style="background:#f1f5f9"><td>4/18</td><td>토</td><td><span class="wkbadge w1">W1</span></td><td colspan="5" style="text-align:center;color:var(--text3)">미집행</td></tr>
+            <tr style="background:#f1f5f9"><td>4/19</td><td>일</td><td><span class="wkbadge w1">W1</span></td><td colspan="5" style="text-align:center;color:var(--text3)">미집행</td></tr>
+            <tr class="wkl"><td>4/20</td><td>월</td><td><span class="wkbadge w1">W1</span></td><td>4,487,962</td><td>1,852</td><td>₩5,000,016</td><td>₩1,114</td><td>₩2,700</td></tr>
+            <tr class="wkl"><td>4/21</td><td>화</td><td><span class="wkbadge w1">W1</span></td><td>4,526,171</td><td>1,714</td><td>₩5,000,016</td><td>₩1,105</td><td>₩2,917</td></tr>
+            <tr class="wkl"><td>4/22</td><td>수</td><td><span class="wkbadge w1">W1</span></td><td>4,578,112</td><td>1,831</td><td>₩5,000,016</td><td>₩1,092</td><td>₩2,731</td></tr>
+            <tr><td>4/23</td><td>목</td><td><span class="wkbadge new">W2</span></td><td>4,754,284</td><td>1,864</td><td>₩5,000,016</td><td>₩1,052</td><td>₩2,683</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>5,385,544</td><td>2,078</td><td>₩5,000,016</td><td>₩929</td><td>₩2,407</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>6,029,386</td><td>2,626</td><td>₩5,000,016</td><td>₩830</td><td>₩1,904</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>5,107,234</td><td>2,200</td><td>₩4,999,904</td><td>₩979</td><td>₩2,273</td></tr>
+            <tr class="tot"><td colspan="3">7일 합계</td><td>34,868,693</td><td>14,165</td><td>₩35,000,000</td><td>₩1,004</td><td>₩2,471</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 일 예산 ₩5,000,016 균등 집행 완료. 주말(4/25~26) 노출이 평일 대비 약 30~35% 높음 (지도앱 사용자 패턴). 1주 패키지 노출 총 3,487만으로 플랜(2,000만) 대비 174% 초과달성.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 넷플릭스 탭 -->
+  <div class="mpanel" id="rz-netflix">
+    <div class="sub-tabs">
+      <button class="stab active" onclick="sSub('rz-nf','type',this)">지면별</button>
+      <button class="stab" onclick="sSub('rz-nf','daily',this)">W2 일별 추이</button>
+    </div>
+    <div class="spanel active" id="rz-nf-type">
+      <div class="card">
+        <div class="card-title">넷플릭스 — 상품별 성과 (4/23 집행 시작)</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>상품</th><th>유형</th><th>예산</th><th>집행비</th><th>노출수</th><th>달성률</th><th>조회수</th><th>CPM</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr><td>논스킵 VA</td><td>동영상</td><td>₩300,000,000</td><td>₩17,370,635</td><td>755,245</td><td>5.8%</td><td>723,983</td><td>₩23,000</td><td>₩24.0</td></tr>
+            <tr><td>일시정지 DA</td><td>CTV DA</td><td>₩100,000,000</td><td>₩5,726,035</td><td>473,226</td><td>5.7%</td><td>-</td><td>₩12,100</td><td>-</td></tr>
+            <tr class="tot"><td colspan="2">합계</td><td>₩400,000,000</td><td>₩23,096,670</td><td>1,228,471</td><td>5.8%</td><td>723,983</td><td>₩18,801</td><td>₩31.9</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note nb">📌 넷플릭스는 4/23부터 집행 시작으로 W2 3일(4/24~4/26) 데이터 기준. CPM ₩23,000은 고정 단가 상품으로 효율 비교 대상 아님. 일시정지 광고는 DA 지면으로 조회수 없음(CPV 미적용). 향후 노출 누적으로 달성률 정상 상승 예상.</div>
+      </div>
+    </div>
+    <div class="spanel" id="rz-nf-daily">
+      <div class="card">
+        <div class="card-title">넷플릭스 — W2 일별 추이 (4/24~4/26, 집행 3일)</div>
+        <div class="notice" style="margin-bottom:12px">📌 넷플릭스는 4/23 집행 확정, 실제 데이터는 4/24~4/26 확인됨</div>
+        <div class="tbl-wrap">
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>주차</th><th>노출수</th><th>조회수(VA)</th><th>비용</th><th>CPM(VA)</th><th>CPV</th></tr></thead>
+          <tbody>
+            <tr style="background:#f1f5f9"><td>4/17~4/23</td><td>-</td><td>-</td><td colspan="5" style="text-align:center;color:var(--text3)">미집행 (4/23 집행 확정)</td></tr>
+            <tr><td>4/24</td><td>금</td><td><span class="wkbadge new">W2</span></td><td>263,298</td><td>213,639</td><td>₩5,619,353</td><td>₩23,000</td><td>₩26.3</td></tr>
+            <tr><td>4/25</td><td>토</td><td><span class="wkbadge new">W2</span></td><td>469,556</td><td>248,471</td><td>₩8,511,344</td><td>₩18,126</td><td>₩34.3</td></tr>
+            <tr><td>4/26</td><td>일</td><td><span class="wkbadge new">W2</span></td><td>495,617</td><td>261,873</td><td>₩8,965,973</td><td>₩18,090</td><td>₩34.2</td></tr>
+            <tr class="tot"><td colspan="3">3일 합계</td><td>1,228,471</td><td>723,983</td><td>₩23,096,670</td><td>₩18,801</td><td>₩31.9</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="note ng">📌 집행 첫날(4/24) 이후 노출이 빠르게 증가하여 3일차 49.5만 도달. 논스킵 VA CPM은 고정 단가 상품으로 기간 내 균등 집행 예정. W3~부터 안정적 노출 누적 기대.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 인사이트 카드 -->
+  <div class="sec"><h2>캠페인 인사이트</h2><span class="sbadge">W1~W2 종합</span></div>
+  <div class="irow">
+    <div class="ins i1">
+      <div class="i-tag">💪 STRENGTH</div>
+      <div class="i-title">통합 CPM·CPV 효율 모두 계획 대비 우수</div>
+      <div class="i-body">전체 통합 CPM ₩4,260으로 플랜(₩9,604) 대비 55.6% 절감. 동영상 CPV ₩15.6으로 플랜(₩28.7) 대비 45.7% 절감. 네이버 지도앱 스플래시 1주 완료 시 노출 3,487만(플랜 2,000만 대비 174% 초과달성).</div>
+    </div>
+    <div class="ins i2">
+      <div class="i-tag">👀 WATCH</div>
+      <div class="i-title">인스타그램 F2534 CPM ₩27,452 — 타겟별 효율 편차 점검 필요</div>
+      <div class="i-body">인스타그램 3개 타겟 중 F2534 CPM ₩27,452로 M2544(₩12,688) 대비 2.2배 높음. 노출수 456,433으로 세 타겟 중 최소. W3 이후 F2534 예산 재배분 또는 소재 교체 검토 필요.</div>
+    </div>
+    <div class="ins i3">
+      <div class="i-tag">⚡ ACTION</div>
+      <div class="i-title">5/1~ 카카오·강남언니·바비톡 동시 집행 시작</div>
+      <div class="i-body">카카오 CPT(₩28M), 강남언니 PMP(₩25.7M), 바비톡 올인원배너(₩12.9M) 등 3개 매체가 5/1 또는 4/27부터 신규 집행 예정. 총 ₩66.6M 추가 투입으로 노출 확장 본격화.</div>
+    </div>
+    <div class="ins i4">
+      <div class="i-tag">🚀 OPPORTUNITY</div>
+      <div class="i-title">넷플릭스·티빙 OTT 채널 효율 상승 기대</div>
+      <div class="i-body">넷플릭스 4/23 집행 시작 이후 일노출 47~50만 수준으로 빠르게 안정화. 티빙 KBO PKG CPM ₩8,032으로 OTT 채널 중 가장 효율적. 5월 KBO 시즌 본격 개막으로 KBO PKG 노출 급증 예상.</div>
+    </div>
+  </div>
+
+  <!-- ⑥ 분석 코멘트 -->
+  <div class="cmt-block">
+    <div class="cmt-brand-hd">
+      <h3><span class="cmt-brand-dot"></span> 리쥬란 본편 — 분석 코멘트</h3>
+      <span class="cmt-brand-period">캠페인 기간: 4/17~6월 중순 | 총예산: ₩1,781,671,429 | 기준일: 2026-04-27</span>
+    </div>
+
+    <div class="cmt-chapter"><span class="cmt-chapter-num">1</span> 매체별 진단 (W1~W2 누적)</div>
+    <div class="cmt-grid">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <!-- 유튜브 논스킵 -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag google">유튜브 — NON-SKIP</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">9,737,141</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩5,286</span></div>
+          </div>
+          <p class="cmt-p">전체 노출 극대화 목적 상품으로 W1~W2 총 9,737,141 노출 달성(플랜대비 59.7%). CPM ₩5,286으로 플랜(₩9,200) 대비 42.5% 절감되어 효율 우수. 조회수 8,315,837 확보로 MF2554 대상 브랜드 메시지 전달 안정적 수행 중.</p>
+        </div>
+        <!-- 유튜브 VVC -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag google">유튜브 — VVC (3개 타겟)</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">6,778,579</span></div>
+            <div class="cmt-kpi-item"><span class="ck">조회수</span><span class="cv">3,843,155</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩7,362</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPV</span><span class="cv">₩12.99</span></div>
+          </div>
+          <p class="cmt-p">F3554·F2534·M2544 3개 타겟 합산 노출 6,778,579 / 조회 3,843,155. M2544 CPM ₩6,752로 가장 효율적이며, F2534 CPM ₩8,416으로 상대적으로 높음. 타겟별 CPV는 ₩12.2~₩15.2 범위로 플랜(₩21) 대비 전 타겟 우수한 효율 달성. 티징 캠페인 대비 CPV 효율이 더욱 개선되어 안정적으로 운영 중입니다.</p>
+        </div>
+        <!-- 티빙 -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag tving">티빙</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">4,153,398</span></div>
+            <div class="cmt-kpi-item"><span class="ck">조회수</span><span class="cv">3,970,275</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩13,724</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPV</span><span class="cv">₩14.36</span></div>
+          </div>
+          <p class="cmt-p">KBO PKG·TOP20·하트시그널5 3개 상품 총 노출 4,153,398. KBO PKG가 노출의 78.1%를 담당하며 CPM ₩8,032로 가장 효율적. 4/20(월요일) KBO 미편성으로 당일 노출 79,399으로 저조했으나 화요일부터 정상 회복. KBO 시즌 야구 시청 인기 지속으로 높은 노출량 유지 중이며, 하트시그널5는 회차 진행에 따라 화제성 상승으로 노출 증가 기대됩니다.</p>
+        </div>
+        <!-- 인스타그램 -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag meta">인스타그램</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">2,072,255</span></div>
+            <div class="cmt-kpi-item"><span class="ck">조회수</span><span class="cv">491,074</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩18,276</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPV</span><span class="cv">₩77.12</span></div>
+          </div>
+          <p class="cmt-p">F3554·F2534·M2544 3개 타겟 총 노출 2,072,255 / 조회 491,074. M2544 CPM ₩12,688로 3개 타겟 중 최저이며 플랜(₩13,800) 대비 효율 개선. F2534 CPM ₩27,452으로 가장 높아 소재 최적화 필요. W2 주말(4/25) 기준 CPV ₩48~54로 급격한 효율 개선 흐름 감지.</p>
+        </div>
+        <!-- 틱톡 -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag tiktok">틱톡</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">2,070,056</span></div>
+            <div class="cmt-kpi-item"><span class="ck">조회수</span><span class="cv">208,223</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩3,945</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPV</span><span class="cv">₩39.22</span></div>
+          </div>
+          <p class="cmt-p">MF2554 타겟 기준 총 노출 2,070,056으로 플랜 대비 46.3% 달성(소진 빠름). CPM ₩3,945는 전 집행 매체 중 최저로 노출 효율 최우수. CPV ₩39.22은 플랜(₩61) 대비 35.7% 절감.</p>
+        </div>
+        <!-- 네이버 지도앱 -->
+        <div class="cmt-card">
+          <div class="cmt-media-tag naver">네이버 지도앱</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">노출수</span><span class="cv">34,868,693</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPM</span><span class="cv">₩1,004</span></div>
+            <div class="cmt-kpi-item"><span class="ck">CPC</span><span class="cv">₩2,471</span></div>
+          </div>
+          <p class="cmt-p">DA 지면(조회없음) 기준 노출 34,868,693으로 플랜(31,500,000) 대비 110.7% 초과달성. CPM ₩1,004로 전 매체 최저 단가로 대량 노출 확보 성공. 스플래시 1주 패키지(₩35M) 완료. 4/17~4/19 미집행(4/20 시작)은 정상적 패키지 일정.</p>
+        </div>
+      </div>
+      <div class="note na" style="margin-top:16px">⚠️ 미집행 매체: VRC 2.0(미집행 → 4/24 집행 시작 확인), 카카오 CPT(5/1 예정), 강남언니 PMP(5/1 예정), 바비톡 올인원배너(4/27 예정), 넷플릭스(4/23 시작)</div>
+    </div>
+
+    <div class="cmt-chapter"><span class="cmt-chapter-num">2</span> 타겟 × 매체 인사이트</div>
+    <div class="cmt-row2">
+      <div>
+        <div class="cmt-sub-hd">유튜브 VVC 타겟별 효율 비교</div>
+        <table class="dt">
+          <thead><tr><th>타겟</th><th>노출수</th><th>조회수</th><th>CPM</th><th>CPV</th><th>판단</th></tr></thead>
+          <tbody>
+            <tr><td>M2544</td><td>1,642,984</td><td>910,415</td><td>₩6,752</td><td>₩12.2</td><td><span class="pill pg">최고효율</span></td></tr>
+            <tr><td>F3554</td><td>3,820,037</td><td>2,206,606</td><td>₩7,262</td><td>₩12.6</td><td><span class="pill pb">양호</span></td></tr>
+            <tr><td>F2534</td><td>1,315,558</td><td>726,134</td><td>₩8,416</td><td>₩15.2</td><td><span class="pill pa">점검필요</span></td></tr>
+          </tbody>
+        </table>
+        <div class="note ng" style="margin-top:8px">💡 M2544가 VVC 3개 타겟 중 CPM/CPV 모두 최저로 효율 최우수. F2534 CPM이 상대적으로 높아 W3 소재 교체 또는 예산 조정 검토 권장.</div>
+      </div>
+      <div>
+        <div class="cmt-sub-hd">W1~W2 일별 전체 노출 흐름</div>
+        <table class="dt">
+          <thead><tr><th>날짜</th><th>요일</th><th>전체 노출</th><th>특이사항</th></tr></thead>
+          <tbody>
+            <tr><td>4/17</td><td>금</td><td>1,927,893</td><td>캠페인 D-1, 알고리즘 학습</td></tr>
+            <tr><td>4/18</td><td>토</td><td>2,441,071</td><td>주말 인벤토리 확대</td></tr>
+            <tr><td>4/19</td><td>일</td><td>2,615,879</td><td>주말 안정화</td></tr>
+            <tr><td>4/20</td><td>월</td><td>6,583,864</td><td>네이버 시작, KBO 미편성</td></tr>
+            <tr><td>4/21</td><td>화</td><td>7,030,723</td><td>KBO 복귀</td></tr>
+            <tr><td>4/22</td><td>수</td><td>7,254,385</td><td>W1 최고 노출</td></tr>
+            <tr><td>4/23</td><td>목</td><td>7,533,985</td><td>넷플릭스 집행 시작</td></tr>
+            <tr><td>4/24</td><td>금</td><td>9,621,699</td><td>VRC 추가 노출 급증</td></tr>
+            <tr><td>4/25</td><td>토</td><td>10,111,109</td><td>주말 최고 노출 1,011만</td></tr>
+            <tr><td>4/26</td><td>일</td><td>9,703,708</td><td>W2 안정적 유지</td></tr>
+          </tbody>
+        </table>
+        <div class="note nb" style="margin-top:8px">💡 4/20 네이버 지도앱 시작으로 전체 노출 195만→658만으로 급증. 4/24 VRC 추가 집행으로 962만 돌파. 노출 성장 트렌드 명확히 우상향.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panel rz-main -->
+
+<!-- ===================== TV PANEL ===================== -->
+<div class="panel" id="p-tv-main">
+
+  <div class="data-lag-note">
+    ℹ️ <strong>TV 데이터 업데이트 기준:</strong> 평일 기준 2일 전까지 반영 / 금~일 데이터는 차주 화요일 확인 가능 | 현재 모니터링 기간: <strong>4/17~4/26</strong> (본편 캠페인 기간: 4/17~4/30)
+  </div>
+
+  <!-- ① TV KPI 카드 -->
+  <div class="sec"><h2>TV 캠페인 KPI 현황</h2><span class="sbadge">1~2주차 누적 (4/17~4/26) | 본편 기준</span><span class="sbadge" style="background:#64748b;margin-left:6px">금액 단위: 천원</span></div>
+  <div class="tv-krow" style="margin-bottom:8px">
+    <div class="kpi ctv">
+      <div class="lbl">광고횟수 (본편)</div>
+      <div class="val">1,737<span style="font-size:13px;font-weight:600"> 회</span></div>
+      <div class="sub"><span class="ach g">플랜대비 ✅</span><span class="note">1주차 560 / 2주차 1,177</span></div>
+    </div>
+    <div class="kpi ctv">
+      <div class="lbl">Eq.GRP</div>
+      <div class="val">246.67</div>
+      <div class="sub"><span class="note">1주차 86.35 / 2주차 160.31</span></div>
+    </div>
+    <div class="kpi ctv">
+      <div class="lbl">Reach 1+%</div>
+      <div class="val">49.57<span style="font-size:13px;font-weight:600"> %</span></div>
+      <div class="sub"><span class="ach g">플랜달성 ✅</span><span class="note">F3554 수도권 기준</span></div>
+    </div>
+    <div class="kpi ctv">
+      <div class="lbl">Eq.CPRP</div>
+      <div class="val">₩1,824</div>
+      <div class="sub"><span class="ach a">플랜(₩1,424) +28%</span></div>
+    </div>
+  </div>
+  <div class="tv-krow2" style="margin-bottom:16px">
+    <div class="kpi ctv">
+      <div class="lbl">집행비용 (본편)</div>
+      <div class="val">₩630,000</div>
+      <div class="sub"><span class="note">총예산 ₩630,000</span></div>
+    </div>
+    <div class="kpi ctv" style="border-top:3px solid var(--amber)">
+      <div class="lbl">광고횟수 (골프채널)</div>
+      <div class="val">298<span style="font-size:13px;font-weight:600"> 회</span></div>
+      <div class="sub"><span class="ach g">플랜(234회) 대비 127.4%</span></div>
+    </div>
+    <div class="kpi ctv" style="border-top:3px solid var(--amber)">
+      <div class="lbl">Eq.GRP (골프)</div>
+      <div class="val">—</div>
+      <div class="sub"><span class="note">닐슨 측정 불가 (가상광고)</span></div>
+    </div>
+  </div>
+
+
+  <!-- 일별 GRP + 누적 Reach1+% 차트 + 슬라이서 -->
+  <div class="sec"><h2>일별 GRP / 누적 Reach1+% 추이</h2></div>
+  <div class="card full" style="margin-bottom:16px">
+    <div class="slicer-bar">
+      <div class="slicer-group">
+        <div class="slicer-label">요일 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-dow-slicer">
+          <button class="sl-btn active" onclick="tvChartToggle('dow','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Mon',this)">월</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Tue',this)">화</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Wed',this)">수</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Thu',this)">목</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Fri',this)">금</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Sat',this)">토</button>
+          <button class="sl-btn" onclick="tvChartToggle('dow','Sun',this)">일</button>
+          <button class="sl-btn reset" onclick="tvChartReset('dow')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">평일/주말 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-we-slicer">
+          <button class="sl-btn active" onclick="tvChartToggle('we','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvChartToggle('we','Work week',this)">평일</button>
+          <button class="sl-btn" onclick="tvChartToggle('we','Week end',this)">주말</button>
+          <button class="sl-btn reset" onclick="tvChartReset('we')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">Comm. Timeband <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-ctb-slicer">
+          <button class="sl-btn active" onclick="tvChartToggle('ctb','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvChartToggle('ctb','SS',this)">SS</button>
+          <button class="sl-btn" onclick="tvChartToggle('ctb','PS',this)">PS</button>
+          <button class="sl-btn" onclick="tvChartToggle('ctb','SA',this)">SA</button>
+          <button class="sl-btn" onclick="tvChartToggle('ctb','A',this)">A</button>
+          <button class="sl-btn" onclick="tvChartToggle('ctb','B',this)">B</button>
+          <button class="sl-btn reset" onclick="tvChartReset('ctb')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">CM 위치 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-cm-slicer">
+          <button class="sl-btn active" onclick="tvChartToggle('cm','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvChartToggle('cm','전CM',this)">전CM</button>
+          <button class="sl-btn" onclick="tvChartToggle('cm','중CM',this)">중CM</button>
+          <button class="sl-btn" onclick="tvChartToggle('cm','후CM',this)">후CM</button>
+          <button class="sl-btn reset" onclick="tvChartReset('cm')">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;height:250px;margin-top:6px"><canvas id="cTvDaily"></canvas></div>
+    <div class="note ng" style="margin-top:10px">📌 일별 GRP(막대) + 누적 Reach1+%(초록 꺾은선). 슬라이서 조합으로 요일·평일주말·Timeband·CM 위치별 GRP 패턴 확인 가능. 주말(토·일) GRP가 평일 대비 높은 경향.</div>
+  </div>
+
+  <!-- 채널별 도넛 -->
+  <div class="sec"><h2>채널별 비중 분석</h2></div>
+  <div class="card full" style="margin-bottom:16px">
+    <div class="slicer-bar">
+      <div class="slicer-group">
+        <div class="slicer-label">기준</div>
+        <div class="slicer-row" id="tv-donut-mode">
+          <button class="sl-btn active" onclick="tvDonutSl('mode','grp',this)">GRP 비중</button>
+          <button class="sl-btn" onclick="tvDonutSl('mode','cnt',this)">횟수 비중</button>
+          <button class="sl-btn" onclick="tvDonutSl('mode','budg',this)">예산 비중</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">요일 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-donut-dow">
+          <button class="sl-btn active" onclick="tvDntToggle('dow','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Mon',this)">월</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Tue',this)">화</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Wed',this)">수</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Thu',this)">목</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Fri',this)">금</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Sat',this)">토</button>
+          <button class="sl-btn" onclick="tvDntToggle('dow','Sun',this)">일</button>
+          <button class="sl-btn reset" onclick="tvDntReset('dow')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">평일/주말 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-donut-we">
+          <button class="sl-btn active" onclick="tvDntToggle('we','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvDntToggle('we','평일',this)">평일</button>
+          <button class="sl-btn" onclick="tvDntToggle('we','주말',this)">주말</button>
+          <button class="sl-btn reset" onclick="tvDntReset('we')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">Comm. Timeband <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-donut-ctb">
+          <button class="sl-btn active" onclick="tvDntToggle('ctb','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvDntToggle('ctb','SS',this)">SS</button>
+          <button class="sl-btn" onclick="tvDntToggle('ctb','PS',this)">PS</button>
+          <button class="sl-btn" onclick="tvDntToggle('ctb','SA',this)">SA</button>
+          <button class="sl-btn" onclick="tvDntToggle('ctb','A',this)">A</button>
+          <button class="sl-btn" onclick="tvDntToggle('ctb','B',this)">B</button>
+          <button class="sl-btn reset" onclick="tvDntReset('ctb')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">CM 위치 <span style="font-weight:400;color:var(--text3)">(중복선택)</span></div>
+        <div class="slicer-row" id="tv-donut-cm">
+          <button class="sl-btn active" onclick="tvDntToggle('cm','전체',this)">전체</button>
+          <button class="sl-btn" onclick="tvDntToggle('cm','전CM',this)">전CM</button>
+          <button class="sl-btn" onclick="tvDntToggle('cm','중CM',this)">중CM</button>
+          <button class="sl-btn" onclick="tvDntToggle('cm','후CM',this)">후CM</button>
+          <button class="sl-btn reset" onclick="tvDntReset('cm')">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;height:320px;margin-top:6px"><canvas id="cTvDonut"></canvas></div>
+    <div class="note nb" style="margin-top:10px">📌 GRP 기준 전체: tvN 26.5% 최다, MBC 19.9%. 횟수 기준: OCN Movies2(292회) 최다. 슬라이서 조합으로 요일·평일주말·Timeband·CM 위치별 채널 비중 변화 확인 가능.</div>
+  </div>
+
+  <!-- TV 분석 코멘트 -->
+  <div class="cmt-block">
+    <div class="cmt-brand-hd">
+      <h3><span class="cmt-brand-dot" style="background:#8b5cf6"></span> 리쥬란 TV — 분석 코멘트</h3>
+      <span class="cmt-brand-period">본편: 4/17~4/30 | 골프: 4/1~4/30 | 모니터링: 4/17~4/26 | 기준일: 2026-04-27</span>
+    </div>
+    <div class="cmt-chapter"><span class="cmt-chapter-num">1</span> 매체별 진단</div>
+    <div class="cmt-grid">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="cmt-card">
+          <div class="cmt-media-tag" style="--before-color:#8b5cf6">📺 본편 (일반채널)</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">광고횟수</span><span class="cv">1,737회</span></div>
+            <div class="cmt-kpi-item"><span class="ck">Eq.GRP</span><span class="cv">246.67</span></div>
+            <div class="cmt-kpi-item"><span class="ck">R1+%</span><span class="cv">49.57%</span></div>
+            <div class="cmt-kpi-item"><span class="ck">Eq.CPRP</span><span class="cv">₩1,824천</span></div>
+          </div>
+          <p class="cmt-p">1~2주차 기준 총 1,737회, Eq.GRP 246.67, R1+% 49.57%로 플랜 달성 완료. 4/24부터 30초 소재 136회 본격 집행으로 2주차 GRP 160.31 급증(1주차 86.35 대비 +85.6%). Eq.CPRP ₩1,824천으로 플랜(₩1,424천) 대비 28% 높으나 말일까지 효율 관리 진행 중. 4/17 MBC &lt;21세기 대군부인&gt; 단일 8.28 Eq.GRP 달성.</p>
+        </div>
+        <div class="cmt-card">
+          <div class="cmt-media-tag" style="--before-color:#d97706">⛳ 골프채널 (SBS Golf)</div>
+          <div class="cmt-kpi-row">
+            <div class="cmt-kpi-item"><span class="ck">광고횟수</span><span class="cv">298회</span></div>
+            <div class="cmt-kpi-item"><span class="ck">Eq.GRP</span><span class="cv">2.241</span></div>
+            <div class="cmt-kpi-item"><span class="ck">R1+%</span><span class="cv">0.96%</span></div>
+            <div class="cmt-kpi-item"><span class="ck">집행비</span><span class="cv">₩65,000천</span></div>
+          </div>
+          <p class="cmt-p">SBS Golf 일반광고 267회 + 가상광고 70회, 합계 298회로 플랜(234회) 대비 127.4% 달성. 4주차(4/20~4/26) Eq.GRP 0.163으로 전주(0.506) 대비 급감 — KLPGA 라운드 편성 축소 영향. 골프 채널은 GRP·CPRP 효율 분석에서 제외하고 노출 횟수·광고비 기준으로 관리.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cmt-chapter"><span class="cmt-chapter-num">2</span> 주차별 흐름 요약</div>
+    <div class="cmt-row2">
+      <div>
+        <div class="cmt-sub-hd">주차별 성과 (본편 일반채널)</div>
+        <table class="dt">
+          <thead><tr><th>주차</th><th>기간</th><th>횟수</th><th>Eq.GRP</th><th>R1+%</th><th>특이사항</th></tr></thead>
+          <tbody>
+            <tr class="wkl"><td>1주차</td><td>4/13~4/19</td><td>560</td><td>86.35</td><td>30.81%</td><td>4/17 MBC 최고 GRP 8.28</td></tr>
+            <tr><td>2주차</td><td>4/20~4/26</td><td>1,177</td><td>160.31</td><td>42.16%</td><td>30초 소재 본격 집행(4/24~)</td></tr>
+            <tr style="background:#f1f5f9"><td>3주차</td><td>4/27~4/30</td><td>-</td><td>-</td><td>-</td><td>차주 화요일 업데이트</td></tr>
+            <tr class="tot"><td>합계</td><td>1+2주차</td><td>1,737</td><td>246.67</td><td>49.57%</td><td>R1+% 플랜 달성 ✅</td></tr>
+          </tbody>
+        </table>
+        <div class="note ng" style="margin-top:8px">💡 2주차 GRP 160.31로 1주차(86.35) 대비 85.6% 급증. 30초 소재(136회, GRP 26.53) 투입이 핵심 요인.</div>
+      </div>
+      <div>
+        <div class="cmt-sub-hd">확인 필요 사항</div>
+        <table class="dt">
+          <thead><tr><th>항목</th><th>현황</th><th>확인 시점</th></tr></thead>
+          <tbody>
+            <tr><td>3주차(4/27~4/30) 데이터</td><td>미확인</td><td>차주 화요일</td></tr>
+            <tr><td>골프 5주차 데이터</td><td>미확인</td><td>차주 화요일</td></tr>
+            <tr><td>골프 가상광고 노출수</td><td>채널 측 확인 중</td><td>수신 시 공유</td></tr>
+          </tbody>
+        </table>
+        <div class="note na" style="margin-top:8px">⚠️ 3주차 데이터는 차주 화요일 업데이트 후 최종 달성률 확정 예정.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panel tv-main -->
+
+
+<!-- ===================== BRAND SEARCH PANEL ===================== -->
+<div class="panel" id="p-bs-main">
+
+  <div class="sec"><h2>브랜드검색 KPI</h2><span class="sbadge">2025/01/01~2026/04/26 | 네이버 브랜드검색 (기간 슬라이서 적용 가능)</span></div>
+
+  <!-- KPI 카드 -->
+  <div class="krow" id="bs-kpi-row" style="grid-template-columns:repeat(5,1fr);margin-bottom:20px">
+    <div class="kpi cb"><div class="lbl">총 노출수</div><div class="val" id="kv-bs-imp">—</div><div class="sub"><span class="note" id="kv-bs-imp-sub">—</span></div></div>
+    <div class="kpi cg"><div class="lbl">총 클릭수</div><div class="val" id="kv-bs-clk">—</div><div class="sub"><span class="note" id="kv-bs-clk-sub">—</span></div></div>
+    <div class="kpi ct"><div class="lbl">통합 CTR</div><div class="val" id="kv-bs-ctr">—</div><div class="sub"><span id="kv-bs-ctr-sub">—</span></div></div>
+    <div class="kpi cb"><div class="lbl">CPC</div><div class="val" id="kv-bs-cpc">—</div><div class="sub"><span class="note">광고비 / 총 클릭</span></div></div>
+    <div class="kpi cg"><div class="lbl">집행 키워드</div><div class="val" id="kv-bs-kw">—</div><div class="sub"><span class="note" id="kv-bs-period">—</span></div></div>
+  </div>
+
+  <!-- 기간 슬라이서 -->
+  <div class="card full" style="margin-bottom:24px;padding:16px 20px">
+    <div class="slicer-bar" style="flex-wrap:wrap;gap:16px">
+      <div class="slicer-group">
+        <div class="slicer-label">연도 <span style="font-weight:400;color:var(--text3)">(복수선택)</span></div>
+        <div class="slicer-row" id="bs-year-slicer">
+          <button class="sl-btn active" onclick="bsPeriodToggle('year','전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('year',2025,this)">2025</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('year',2026,this)">2026</button>
+          <button class="sl-btn reset" onclick="bsPeriodReset('year')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">월 <span style="font-weight:400;color:var(--text3)">(복수선택)</span></div>
+        <div class="slicer-row" id="bs-month-slicer">
+          <button class="sl-btn active" onclick="bsPeriodToggle('month','전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',1,this)">1월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',2,this)">2월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',3,this)">3월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',4,this)">4월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',5,this)">5월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',6,this)">6월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',7,this)">7월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',8,this)">8월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',9,this)">9월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',10,this)">10월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',11,this)">11월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('month',12,this)">12월</button>
+          <button class="sl-btn reset" onclick="bsPeriodReset('month')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group">
+        <div class="slicer-label">요일 <span style="font-weight:400;color:var(--text3)">(복수선택)</span></div>
+        <div class="slicer-row" id="bs-dow-slicer">
+          <button class="sl-btn active" onclick="bsPeriodToggle('dow','전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',0,this)">월</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',1,this)">화</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',2,this)">수</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',3,this)">목</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',4,this)">금</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',5,this)">토</button>
+          <button class="sl-btn" onclick="bsPeriodToggle('dow',6,this)">일</button>
+          <button class="sl-btn reset" onclick="bsPeriodReset('dow')">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ① 일별 노출/CTR -->
+  <div class="sec"><h2>일별 노출 / CTR 추이</h2><span class="sbadge t">기간·디바이스·키워드 슬라이서 적용</span></div>
+  <div class="card full" style="margin-bottom:24px;padding:20px 24px">
+    <div class="slicer-bar" style="margin-bottom:18px">
+      <div class="slicer-group">
+        <div class="slicer-label">디바이스 <span style="font-weight:400;color:var(--text3)">(복수선택)</span></div>
+        <div class="slicer-row" id="bs-device-slicer">
+          <button class="sl-btn active" onclick="bsDevToggle('전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsDevToggle('PC',this)">PC</button>
+          <button class="sl-btn" onclick="bsDevToggle('Mobile',this)">Mobile</button>
+          <button class="sl-btn reset" onclick="bsReset('device')">↺ 초기화</button>
+        </div>
+      </div>
+      <div class="slicer-group" style="flex:1">
+        <div class="slicer-label">키워드 <span style="font-weight:400;color:var(--text3)">(복수 선택)</span></div>
+        <div class="slicer-row" id="bs-kw-slicer">
+          <button class="sl-btn active" onclick="bsKwToggle('전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란효과',this)">리쥬란효과</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란정품인증',this)">리쥬란정품인증</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란스킨부스터',this)">리쥬란스킨부스터</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란주사',this)">리쥬란주사</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란시술',this)">리쥬란시술</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란인증',this)">리쥬란인증</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란이벤트',this)">리쥬란이벤트</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란김세정',this)">리쥬란김세정</button>
+          <button class="sl-btn" onclick="bsKwToggle('김세정리쥬란',this)">김세정리쥬란</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란톤업부스터',this)">리쥬란톤업부스터</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란효능',this)">리쥬란효능</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란정품',this)">리쥬란정품</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란NFC',this)">리쥬란NFC</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란정품이벤트',this)">리쥬란정품이벤트</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란정품인증이벤트',this)">리쥬란정품인증이벤트</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란병원화장품',this)">리쥬란병원화장품</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란병원용화장품',this)">리쥬란병원용화장품</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란경품',this)">리쥬란경품</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란정품인증혜택',this)">리쥬란정품인증혜택</button>
+          <button class="sl-btn" onclick="bsKwToggle('김세정스킨부스터',this)">김세정스킨부스터</button>
+          <button class="sl-btn" onclick="bsKwToggle('리쥬란추첨',this)">리쥬란추첨</button>
+          <button class="sl-btn reset" onclick="bsReset('kw')">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+    <div style="height:280px"><canvas id="cBsDaily"></canvas></div>
+  </div>
+
+  <!-- ② 요일별 차트 -->
+  <div class="sec"><h2>요일별 노출 / CTR</h2><span class="sbadge t">기간·디바이스 슬라이서 적용</span></div>
+  <div class="card full" style="margin-bottom:24px;padding:20px 24px">
+    <div class="slicer-bar" style="margin-bottom:18px">
+      <div class="slicer-group">
+        <div class="slicer-label">디바이스</div>
+        <div class="slicer-row" id="bs-wd-dev-slicer">
+          <button class="sl-btn active" onclick="bsWdToggle('전체',this)">전체</button>
+          <button class="sl-btn" onclick="bsWdToggle('PC',this)">PC</button>
+          <button class="sl-btn" onclick="bsWdToggle('Mobile',this)">Mobile</button>
+          <button class="sl-btn reset" onclick="bsWdReset()">↺ 초기화</button>
+        </div>
+      </div>
+    </div>
+    <div style="height:260px"><canvas id="cBsWeekday"></canvas></div>
+  </div>
+
+  <!-- ③ 키워드별 바 차트 -->
+  <div class="sec"><h2>키워드별 성과</h2><span class="sbadge t">기간·디바이스 슬라이서 적용</span></div>
+  <div class="card full" style="margin-bottom:24px;padding:20px 24px">
+    <div style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:14px;gap:8px">
+      <span style="font-size:11px;color:var(--text3);margin-right:4px">기준:</span>
+      <button class="sl-btn active" id="bsKwM-clk" onclick="bsKwMetric('clicks',this)">클릭수</button>
+      <button class="sl-btn" id="bsKwM-ctr" onclick="bsKwMetric('ctr',this)">CTR</button>
+    </div>
+    <div style="height:320px"><canvas id="cBsKwBar"></canvas></div>
+  </div>
+
+  <!-- ④ 도넛 차트 3종 -->
+  <div class="sec"><h2>디바이스 / 소재요소 분석</h2><span class="sbadge">기간 슬라이서 적용</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px">
+    <div class="card" style="padding:20px 20px 16px">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">📱 디바이스별 노출</div>
+      <div style="height:180px;display:flex;align-items:center;justify-content:center"><canvas id="cBsDevImps"></canvas></div>
+    </div>
+    <div class="card" style="padding:20px 20px 16px">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">🖱️ 디바이스별 클릭</div>
+      <div style="height:180px;display:flex;align-items:center;justify-content:center"><canvas id="cBsDevClk"></canvas></div>
+    </div>
+    <div class="card" style="padding:20px 20px 16px">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)">🎯 소재요소별 클릭</div>
+      <div style="height:180px;display:flex;align-items:center;justify-content:center"><canvas id="cBsElem"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ⑤ 키워드별 상세 성과 테이블 -->
+  <div class="sec"><h2>키워드별 상세 성과</h2><span class="sbadge">기간 슬라이서 적용</span></div>
+  <div class="card full" style="padding:0;overflow:hidden;margin-bottom:8px">
+    <div style="overflow-x:auto">
+      <table id="bs-kw-table" class="dt" style="font-size:12px">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px 16px;width:180px">키워드</th>
+            <th style="padding:12px 16px">노출수</th>
+            <th style="padding:12px 16px">노출 비중</th>
+            <th style="padding:12px 16px">클릭수</th>
+            <th style="padding:12px 16px">CTR</th>
+            <th style="padding:12px 16px;text-align:left">분류</th>
+          </tr>
+        </thead>
+        <tbody id="bs-kw-tbody"></tbody>
+      </table>
+    </div>
+    <div class="note ng" id="bs-insight" style="margin:12px 16px 14px">📌 슬라이서를 선택하면 해당 기간 데이터가 반영됩니다.</div>
+  </div>
+
+</div><!-- /panel bs-main -->
+
+
+
+</div>
+
+</div><!-- /main -->
+<script>
+
+/* ════════════════════════════════════════════
+   파마리서치 대시보드 v2 — 통합 JS
+════════════════════════════════════════════ */
+function sMain(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.htabs .tbtn').forEach(b=>b.classList.remove('active'));document.getElementById('p-'+id).classList.add('active');btn.classList.add('active');setTimeout(animBars,50);}
+function sMedia(panel,media,tab){const px=panel+'-';document.querySelectorAll('[id^="'+px+'"]').forEach(p=>{if(p.classList.contains('mpanel'))p.classList.remove('active');});tab.parentElement.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));document.getElementById(px+media).classList.add('active');tab.classList.add('active');}
+function sSub(px,sub,btn){const pid=px+'-'+sub;document.querySelectorAll('[id^="'+px+'-"]').forEach(p=>{if(p.classList.contains('spanel'))p.classList.remove('active');});btn.parentElement.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));document.getElementById(pid).classList.add('active');btn.classList.add('active');}
+function animBars(){document.querySelectorAll('.bf').forEach(el=>{const w=el.style.width;el.style.width='0';requestAnimationFrame(()=>requestAnimationFrame(()=>{el.style.width=w;}));});}
+
+const C={BLUE:'#3a6cf4',GREEN:'#0ca86f',AMBER:'#f59e0b',RED:'#ef4444',SLATE:'#64748b',BA:'rgba(58,108,244,0.18)',GA:'rgba(12,168,111,0.12)',AA:'rgba(245,158,11,0.22)',PIE:['#3a6cf4','#5b8af4','#7aaaf8','#93c5fd','#bfdbfe','#0ca86f','#34d399','#f59e0b','#fbbf24','#ef4444','#64748b','#94a3b8']};
+
+/* ── TV 데이터 & 슬라이서 ─────────────────── */
+const TV_DAYS=['4/17','4/18','4/19','4/20','4/21','4/22','4/23','4/24','4/25','4/26'];
+const TV_RAW=[
+  {d:17,dow:'Fri',we:'Work week',cm:'전CM',grp:9.407,cnt:67},{d:17,dow:'Fri',we:'Work week',cm:'중CM',grp:12.638,cnt:27},{d:17,dow:'Fri',we:'Work week',cm:'후CM',grp:3.856,cnt:58},
+  {d:18,dow:'Sat',we:'Week end', cm:'전CM',grp:9.892,cnt:88},{d:18,dow:'Sat',we:'Week end', cm:'중CM',grp:3.334,cnt:32},{d:18,dow:'Sat',we:'Week end', cm:'후CM',grp:13.449,cnt:78},
+  {d:19,dow:'Sun',we:'Week end', cm:'전CM',grp:8.503,cnt:85},{d:19,dow:'Sun',we:'Week end', cm:'중CM',grp:6.490,cnt:32},{d:19,dow:'Sun',we:'Week end', cm:'후CM',grp:17.992,cnt:84},
+  {d:20,dow:'Mon',we:'Work week',cm:'전CM',grp:4.260,cnt:65},{d:20,dow:'Mon',we:'Work week',cm:'중CM',grp:3.766,cnt:31},{d:20,dow:'Mon',we:'Work week',cm:'후CM',grp:7.596,cnt:62},
+  {d:21,dow:'Tue',we:'Work week',cm:'전CM',grp:2.275,cnt:54},{d:21,dow:'Tue',we:'Work week',cm:'중CM',grp:3.729,cnt:28},{d:21,dow:'Tue',we:'Work week',cm:'후CM',grp:3.883,cnt:44},
+  {d:22,dow:'Wed',we:'Work week',cm:'전CM',grp:7.826,cnt:56},{d:22,dow:'Wed',we:'Work week',cm:'중CM',grp:1.467,cnt:23},{d:22,dow:'Wed',we:'Work week',cm:'후CM',grp:7.861,cnt:63},
+  {d:23,dow:'Thu',we:'Work week',cm:'전CM',grp:3.430,cnt:49},{d:23,dow:'Thu',we:'Work week',cm:'중CM',grp:6.608,cnt:38},{d:23,dow:'Thu',we:'Work week',cm:'후CM',grp:6.692,cnt:58},
+  {d:24,dow:'Fri',we:'Work week',cm:'전CM',grp:9.429,cnt:53},{d:24,dow:'Fri',we:'Work week',cm:'중CM',grp:2.014,cnt:31},{d:24,dow:'Fri',we:'Work week',cm:'후CM',grp:8.722,cnt:56},
+  {d:25,dow:'Sat',we:'Week end', cm:'전CM',grp:11.357,cnt:73},{d:25,dow:'Sat',we:'Week end', cm:'중CM',grp:5.495,cnt:34},{d:25,dow:'Sat',we:'Week end', cm:'후CM',grp:12.610,cnt:48},
+  {d:26,dow:'Sun',we:'Week end', cm:'전CM',grp:11.225,cnt:65},{d:26,dow:'Sun',we:'Week end', cm:'중CM',grp:5.971,cnt:42},{d:26,dow:'Sun',we:'Week end', cm:'후CM',grp:15.388,cnt:49}
+];
+const TV_CTB={SS:[3.827,8.143,16.628,3.497,2.698,5.202,3.905,2.213,8.095,12.253],PS:[6.954,10.513,10.011,5.576,4.448,3.264,4.580,4.151,11.578,12.316],SA:[14.375,7.492,4.151,5.851,1.339,6.447,6.009,11.780,8.027,3.886],A:[0.745,0.527,1.645,0.493,1.085,1.698,2.236,1.303,1.221,2.529],B:[0.000,0.000,0.550,0.205,0.317,0.543,0.000,0.718,0.541,1.600]};
+const TV_CUME_R1=[15.82,24.57,30.81,34.04,36.26,37.88,40.13,42.28,45.54,49.57];
+const TV_CH={names:['tvN','MBC','JTBC','ENA','MBC every1','tvN STORY','SBS Plus','tvN DRAMA','OCN','OCN Movies','OCN Movies2','MBC드라마넷','tvN SHOW','SBS funE','Mnet','ENA DRAMA','ENA PLAY','JTBC2'],grp:[65.34,48.97,21.42,16.34,15.76,11.23,9.64,9.11,5.82,5.17,4.67,4.23,3.46,2.09,1.99,1.03,0.56,0.34],cnt:[143,40,67,62,63,81,75,137,101,170,292,21,94,40,103,24,25,35],type:['유료방송','지상파','종편','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','유료방송','종편']};;
+
+/* ── TV 채널 도넛 RAW 데이터 (요일|평일주말|CTB|CM) ── */
+/* TV_CH_RAW: tv_data.js */
+
+/* ── TV 도넛 슬라이서 상태 (5개) ─────────── */
+
+
+
+
+
+
+
+
+
+/* ── 브랜드검색 전체 데이터 (Keyword_Analysis 기준) ─── */
+/* BS_RAW: bs_raw.js */
+/* BS_ELEM: bs_elem.js */
+const BS_KEYWORDS=['리쥬란효과','리쥬란정품인증','리쥬란스킨부스터','리쥬란주사','리쥬란시술','리쥬란인증','리쥬란이벤트','리쥬란김세정','김세정리쥬란','리쥬란톤업부스터','리쥬란효능','리쥬란정품','리쥬란NFC','리쥬란정품이벤트','리쥬란정품인증이벤트','리쥬란병원화장품','리쥬란병원용화장품','리쥬란경품','리쥬란정품인증혜택','김세정스킨부스터','리쥬란추첨'];
+const BS_DOW_LABELS=['월','화','수','목','금','토','일'];
+
+
+/* DIG_DAYS: dig_data.js */
+/* DIG: dig_data.js */
+/* DIG_COL: dig_data.js */
+
+
+/* ── 도넛 % 인라인 레이블 플러그인 ─────────── */
+const pctLabelPlugin={id:'pctLabel',afterDatasetsDraw(chart){
+  if(chart.config.type!=='doughnut')return;
+  const{ctx,data}=chart;
+  const total=data.datasets[0].data.reduce((a,b)=>a+(+b||0),0);
+  if(!total)return;
+  chart.getDatasetMeta(0).data.forEach((arc,i)=>{
+    const val=+data.datasets[0].data[i]||0;
+    const pct=val/total*100;
+    if(pct<4)return;
+    const mid=(arc.startAngle+arc.endAngle)/2;
+    const r=(arc.innerRadius+arc.outerRadius)/2;
+    ctx.save();
+    ctx.fillStyle='#fff';
+    ctx.font='bold 13px sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(pct.toFixed(1)+'%',arc.x+r*Math.cos(mid),arc.y+r*Math.sin(mid));
+    ctx.restore();
+  });
+}};
+Chart.register(pctLabelPlugin);
+
+/* ── 차트 초기화 ───────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   새 슬라이서 함수 모음 — 중복선택 + 초기화 + % 꺾은선
+══════════════════════════════════════════════════════ */
+
+/* ── 공통 유틸 ───────────────────────────────────── */
+function slToggle(selSet, val, btn, allBtnSel, onAll, onOther) {
+  if(val==='전체'||val===onAll){
+    selSet.clear(); selSet.add(val);
+    document.querySelectorAll(allBtnSel+' .sl-btn:not(.reset)').forEach(b=>b.classList.remove('active','multi-active'));
+    btn.classList.add('active');
+  } else {
+    selSet.delete('전체'); selSet.delete(onAll);
+    const allBtn=document.querySelector(allBtnSel+' .sl-btn:not(.reset)');
+    if(allBtn) allBtn.classList.remove('active','multi-active');
+    if(selSet.has(val)){selSet.delete(val);btn.classList.remove('active','multi-active');}
+    else{selSet.add(val);btn.classList.add('multi-active');}
+    if(selSet.size===0){selSet.add('전체');if(allBtn)allBtn.classList.add('active');}
+  }
+}
+
+/* ── 디지털 슬라이서 상태 ────────────────────────── */
+let digMetricSel=new Set(['imps']), digMediaSel=new Set(['통합']);
+let digMetricArr=['imps']; // 순서 유지 배열
+let digChart=null;
+
+function digToggle(type, val, btn) {
+  if(type==='metric'){
+    // 지표: 최대 2개 선택, 순서 배열로 관리 (Set 아님)
+    const idx=digMetricArr.indexOf(val);
+    if(idx>=0){
+      // 이미 선택됨 → 해제 (단, 마지막 하나는 해제 불가)
+      if(digMetricArr.length>1){
+        digMetricArr.splice(idx,1);
+        btn.classList.remove('active','multi-active');
+      }
+    } else {
+      if(digMetricArr.length>=2){
+        // 이미 2개면 가장 오래된 것 해제
+        const oldVal=digMetricArr.shift();
+        document.querySelectorAll('#dig-metric-slicer .sl-btn:not(.reset)').forEach(b=>{
+          if(b.textContent.trim()===({imps:'노출수',vtr:'VTR',ctr:'CTR',cpm:'CPM'}[oldVal]||oldVal))
+            b.classList.remove('active','multi-active');
+        });
+      }
+      digMetricArr.push(val);
+      btn.classList.add('multi-active');
+    }
+    // UI 동기화
+    digMetricSel=new Set(digMetricArr);
+  } else {
+    slToggle(digMediaSel,val,btn,'#dig-media-slicer','통합','');
+  }
+  updateDigChart();
+}
+
+function digReset(type){
+  if(type==='metric'){
+    digMetricArr=['imps'];
+    digMetricSel=new Set(['imps']);
+    document.querySelectorAll('#dig-metric-slicer .sl-btn:not(.reset)').forEach((b,i)=>{
+      b.classList.remove('active','multi-active');
+      if(i===0) b.classList.add('active');
+    });
+  } else {
+    digMediaSel=new Set(['통합']);
+    document.querySelectorAll('#dig-media-slicer .sl-btn:not(.reset)').forEach((b,i)=>{
+      b.classList.remove('active','multi-active');
+      if(i===0) b.classList.add('active');
+    });
+  }
+  updateDigChart();
+}
+
+
+
+function updateDigChart() {
+  if(!digChart) return;
+  const metrics=[...digMetricArr];
+  const medias=Array.from(digMediaSel);
+  const lbl={imps:'노출수',vtr:'VTR(%)',ctr:'CTR(%)',cpm:'CPM(원)'};
+  const PAL=['#3a6cf4','#0ca86f','#f59e0b','#ef4444','#7c3aed','#0891b2','#ea580c'];
+  const I_COL={imps:'#3a6cf4',vtr:'#0ca86f',ctr:'#f59e0b',cpm:'#7c3aed'};
+  const multiMedia=medias.length>1;
+  const isBar=m=>m==='imps'||m==='cpm';
+
+  const m0=metrics[0]||'imps';
+  const m1=metrics[1]||null;
+
+  const datasets=[];
+  let yMax=0, y1Max=0;
+
+  medias.forEach((media,mi)=>{
+    const src=DIG[media]||DIG.통합;
+    const baseCol=multiMedia?PAL[mi%PAL.length]:null;
+    metrics.forEach((metric,mk)=>{
+      const data=src[metric]||src.imps;
+      const axis=mk===0?'y':'y1';
+      const col=baseCol||I_COL[metric]||PAL[mk];
+      const label=(multiMedia?media+' ':'')+lbl[metric];
+      const maxVal=Math.max(...data.filter(v=>isFinite(v)&&v>0),0);
+      if(axis==='y') yMax=Math.max(yMax,maxVal);
+      else           y1Max=Math.max(y1Max,maxVal);
+      if(isBar(metric)){
+        datasets.push({label,data,type:'bar',
+          backgroundColor:col+'28',borderColor:col,
+          borderWidth:1.5,borderRadius:3,yAxisID:axis,order:2});
+      } else {
+        datasets.push({label,data,type:'line',
+          borderColor:col,backgroundColor:'transparent',
+          pointRadius:3.5,pointBackgroundColor:col,
+          yAxisID:axis,tension:0.3,borderWidth:2.5,order:1,
+          borderDash:mk>0&&!multiMedia?[5,3]:[]});
+      }
+    });
+  });
+
+  digChart.data.datasets=datasets;
+
+  // scales 전체를 새 객체로 교체 (Chart.js는 options.scales 통째 교체해야 반영됨)
+  const yTickCb = m0==='imps'?
+    v=>yMax>100000?(v/10000).toFixed(0)+'만':v.toLocaleString():
+    m0==='cpm'?v=>'₩'+Math.round(v).toLocaleString():
+    v=>v.toFixed(1)+'%';
+
+  const y1TickCb = !m1?v=>v:
+    (m1==='imps'||m1==='cpm')?v=>v.toLocaleString():
+    v=>v.toFixed(1)+'%';
+
+  digChart.options.scales={
+    y:{
+      type:'linear',position:'left',display:true,
+      grid:{color:'#f1f5f9'},min:0,
+      suggestedMax:yMax>0?yMax*1.2:10,
+      ticks:{font:{size:10},callback:yTickCb},
+      title:{display:true,text:lbl[m0],font:{size:10}}
+    },
+    y1:{
+      type:'linear',position:'right',display:m1!==null,
+      grid:{drawOnChartArea:false},min:0,
+      suggestedMax:m1&&y1Max>0?y1Max*1.3:100,
+      ticks:{font:{size:10},callback:y1TickCb},
+      title:{display:m1!==null,text:m1?lbl[m1]:'',font:{size:10}}
+    }
+  };
+
+  digChart.options.plugins.legend.display=datasets.length>1;
+  digChart.options.plugins.tooltip.callbacks.label=ctx=>{
+    const v=ctx.parsed.y, nm=ctx.dataset.label;
+    if(nm.includes('VTR')||nm.includes('CTR')) return nm+': '+v.toFixed(2)+'%';
+    if(nm.includes('CPM')) return nm+': ₩'+Math.round(v).toLocaleString();
+    if(nm.includes('노출')) return nm+': '+Math.round(v).toLocaleString()+'회';
+    return nm+': '+v;
+  };
+  digChart.update();
+}
+
+/* ── TV 일별 GRP 슬라이서 상태 ──────────────────── */
+let tvDowSel=new Set(['전체']),tvWeSel=new Set(['전체']),tvCtbSel=new Set(['전체']),tvCmSel=new Set(['전체']);
+let tvDailyChart=null;
+
+function tvChartToggle(type, val, btn) {
+  const map={dow:{sel:tvDowSel,id:'#tv-dow-slicer'},we:{sel:tvWeSel,id:'#tv-we-slicer'},
+             ctb:{sel:tvCtbSel,id:'#tv-ctb-slicer'},cm:{sel:tvCmSel,id:'#tv-cm-slicer'}};
+  const {sel,id}=map[type];
+  slToggle(sel,val,btn,id,'전체','');
+  updateTvDaily();
+}
+
+function tvChartReset(type) {
+  const map={dow:{sel:tvDowSel,id:'#tv-dow-slicer'},we:{sel:tvWeSel,id:'#tv-we-slicer'},
+             ctb:{sel:tvCtbSel,id:'#tv-ctb-slicer'},cm:{sel:tvCmSel,id:'#tv-cm-slicer'}};
+  const {sel,id}=map[type];
+  sel.clear(); sel.add('전체');
+  document.querySelectorAll(id+' .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  updateTvDaily();
+}
+
+function getTvGrpFiltered() {
+  const dowArr=Array.from(tvDowSel);
+  const weArr=Array.from(tvWeSel);
+  const ctbArr=Array.from(tvCtbSel);
+  const cmArr=Array.from(tvCmSel);
+  return TV_DAYS.map((_,i)=>{
+    const day=17+i;
+    let rows=TV_RAW.filter(r=>r.d===day);
+    if(!tvDowSel.has('전체')) rows=rows.filter(r=>dowArr.includes(r.dow));
+    if(!tvWeSel.has('전체'))  rows=rows.filter(r=>weArr.includes(r.we));
+    if(!tvCmSel.has('전체'))  rows=rows.filter(r=>cmArr.includes(r.cm));
+    // CTB는 TV_CTB 데이터 사용
+    if(!tvCtbSel.has('전체')){
+      const ctbTotal=ctbArr.reduce((sum,ctb)=>{
+        const arr=TV_CTB[ctb]||[];
+        return sum+(arr[i]||0);
+      },0);
+      return +ctbTotal.toFixed(3);
+    }
+    return +rows.reduce((a,r)=>a+r.grp,0).toFixed(3);
+  });
+}
+
+function updateTvDaily() {
+  if(!tvDailyChart) return;
+  const grps=getTvGrpFiltered();
+  tvDailyChart.data.datasets[0].data=grps;
+  const maxGrp=Math.max(...grps.filter(v=>v>0),1);
+  tvDailyChart.options.scales.y.suggestedMax=maxGrp*1.3;
+  tvDailyChart.options.scales.y.min=0;
+  tvDailyChart.update();
+}
+
+/* ── TV 도넛 슬라이서 상태 ──────────────────────── */
+let tvDntMode='grp', tvDntDowSel=new Set(['전체']), tvDntWeSel=new Set(['전체']),
+    tvDntCtbSel=new Set(['전체']), tvDntCmSel=new Set(['전체']);
+let tvDonutChart=null;
+
+function tvDonutSl(type, val, btn) {
+  if(type==='mode'){
+    tvDntMode=val;
+    document.querySelectorAll('#tv-donut-mode .sl-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  updateTvDonut();
+}
+
+function tvDntToggle(type, val, btn) {
+  const map={dow:{sel:tvDntDowSel,id:'#tv-donut-dow'},we:{sel:tvDntWeSel,id:'#tv-donut-we'},
+             ctb:{sel:tvDntCtbSel,id:'#tv-donut-ctb'},cm:{sel:tvDntCmSel,id:'#tv-donut-cm'}};
+  const {sel,id}=map[type];
+  slToggle(sel,val,btn,id,'전체','');
+  updateTvDonut();
+}
+
+function tvDntReset(type) {
+  const map={dow:{sel:tvDntDowSel,id:'#tv-donut-dow'},we:{sel:tvDntWeSel,id:'#tv-donut-we'},
+             ctb:{sel:tvDntCtbSel,id:'#tv-donut-ctb'},cm:{sel:tvDntCmSel,id:'#tv-donut-cm'}};
+  const {sel,id}=map[type];
+  sel.clear(); sel.add('전체');
+  document.querySelectorAll(id+' .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  updateTvDonut();
+}
+
+/* ── TV 채널별 예산 데이터 (천원, 고정값) ─── */
+/* TV_CH_BUDGET: tv_data.js */
+
+
+function updateTvDonut() {
+  if(!tvDonutChart) return;
+  const names=['tvN','MBC','JTBC','ENA','MBC every1','tvN STORY','SBS Plus','tvN DRAMA','OCN','OCN Movies','OCN Movies2','MBC드라마넷','tvN SHOW','SBS funE','Mnet','ENA DRAMA','ENA PLAY','JTBC2'];
+  let vals, unit;
+  if(tvDntMode==='budg'){
+    vals=TV_CH_BUDGET.budg;
+    unit='천원';
+  } else {
+    const dow=tvDntDowSel.has('전체')?'전체':Array.from(tvDntDowSel)[0];
+    const we=tvDntWeSel.has('전체')?'전체':Array.from(tvDntWeSel)[0];
+    const ctb=tvDntCtbSel.has('전체')?'전체':Array.from(tvDntCtbSel)[0];
+    const cm=tvDntCmSel.has('전체')?'전체':Array.from(tvDntCmSel)[0];
+    const key=dow+'|'+we+'|'+ctb+'|'+cm;
+    const raw=TV_CH_RAW[key]||TV_CH_RAW['전체|전체|전체|전체'];
+    vals=tvDntMode==='grp'?raw.g:raw.c;
+    unit=tvDntMode==='grp'?' GRP':' 회';
+  }
+  const total=vals.reduce((a,b)=>a+b,0);
+  if(total===0){tvDonutChart.data.labels=['데이터 없음'];tvDonutChart.data.datasets[0].data=[1];tvDonutChart.update();return;}
+  const pairs=names.map((n,i)=>({n,v:vals[i]})).filter(d=>d.v>0).sort((a,b)=>b.v-a.v);
+  const top=pairs.slice(0,10);
+  const rest=pairs.slice(10).reduce((a,d)=>a+d.v,0);
+  if(rest>0.001)top.push({n:'기타',v:tvDntMode==='budg'?Math.round(rest):+rest.toFixed(3)});
+  tvDonutChart.data.labels=top.map(d=>d.n);
+  tvDonutChart.data.datasets[0].data=top.map(d=>d.v);
+  tvDonutChart.options.plugins.tooltip.callbacks.label=ctx=>{
+    const p=((ctx.parsed/total)*100).toFixed(1);
+    const val=tvDntMode==='budg'?ctx.parsed.toLocaleString()+'천원':ctx.parsed+unit;
+    return ctx.label+': '+val+' ('+p+'%)';
+  };
+  tvDonutChart.update();
+}
+
+/* ── 브랜드검색 슬라이서 상태 ───────────────────── */
+let bsYearSel=new Set(['전체']), bsMonthSel=new Set(['전체']), bsDowSel=new Set(['전체']);
+let bsDevSel=new Set(['전체']), bsKwSel=new Set(['전체']), bsWdDevSel=new Set(['전체']);
+let bsKwMode='clicks', bsDailyChart=null, bsKwChart=null, bsWdChart=null;
+let bsDevDonutI=null, bsDevDonutC=null, bsElemDonut=null;
+
+/* ── 필터링 유틸 ────────────────────────────────── */
+function bsFilterRows(rows, extraDev, extraKw) {
+  return rows.filter(r => {
+    if(!bsYearSel.has('전체') && !bsYearSel.has(r.year)) return false;
+    if(!bsMonthSel.has('전체') && !bsMonthSel.has(r.month)) return false;
+    if(!bsDowSel.has('전체') && !bsDowSel.has(r.dow)) return false;
+    if(extraDev && !extraDev.has('전체') && !extraDev.has(r.dev)) return false;
+    if(extraKw && !extraKw.has('전체') && !extraKw.has(r.kw)) return false;
+    return true;
+  });
+}
+
+/* ── 기간 슬라이서 (연도/월/요일) ─────────────────── */
+function bsPeriodToggle(type, val, btn) {
+  const selMap={year:bsYearSel,month:bsMonthSel,dow:bsDowSel};
+  const idMap={year:'#bs-year-slicer',month:'#bs-month-slicer',dow:'#bs-dow-slicer'};
+  const sel=selMap[type];
+  if(val==='전체'){
+    sel.clear();sel.add('전체');
+    document.querySelectorAll(idMap[type]+' .sl-btn:not(.reset)').forEach(b=>b.classList.remove('active','multi-active'));
+    btn.classList.add('active');
+  } else {
+    sel.delete('전체');
+    document.querySelector(idMap[type]+' .sl-btn:not(.reset)').classList.remove('active');
+    if(sel.has(val)){sel.delete(val);btn.classList.remove('active','multi-active');}
+    else{sel.add(val);btn.classList.add('multi-active');}
+    if(sel.size===0){sel.add('전체');document.querySelector(idMap[type]+' .sl-btn:not(.reset)').classList.add('active');}
+  }
+  bsUpdateAll();
+}
+function bsPeriodReset(type) {
+  const selMap={year:bsYearSel,month:bsMonthSel,dow:bsDowSel};
+  const idMap={year:'#bs-year-slicer',month:'#bs-month-slicer',dow:'#bs-dow-slicer'};
+  selMap[type].clear();selMap[type].add('전체');
+  document.querySelectorAll(idMap[type]+' .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  bsUpdateAll();
+}
+
+/* ── 디바이스/키워드 슬라이서 ─────────────────────── */
+function bsDevToggle(val, btn) {
+  slToggle(bsDevSel,val,btn,'#bs-device-slicer','전체','');
+  bsUpdateAll();
+}
+function bsReset(type) {
+  if(type==='device'){
+    bsDevSel=new Set(['전체']);
+    document.querySelectorAll('#bs-device-slicer .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  } else {
+    bsKwSel=new Set(['전체']);
+    document.querySelectorAll('#bs-kw-slicer .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  }
+  bsUpdateAll();
+}
+function bsKwToggle(kw, btn) {
+  if(kw==='전체'){
+    bsKwSel=new Set(['전체']);
+    document.querySelectorAll('#bs-kw-slicer .sl-btn').forEach(b=>b.classList.remove('active','multi-active'));
+    btn.classList.add('active');
+  } else {
+    bsKwSel.delete('전체');
+    document.getElementById('bs-kw-slicer').querySelector('.sl-btn').classList.remove('active');
+    if(bsKwSel.has(kw)){bsKwSel.delete(kw);btn.classList.remove('active','multi-active');}
+    else{bsKwSel.add(kw);btn.classList.add('multi-active');}
+    if(bsKwSel.size===0){bsKwSel.add('전체');document.getElementById('bs-kw-slicer').querySelector('.sl-btn').classList.add('active');}
+  }
+  bsUpdateAll();
+}
+function bsWdToggle(val, btn) {
+  slToggle(bsWdDevSel,val,btn,'#bs-wd-dev-slicer','전체','');
+  updateBsWeekday();
+}
+function bsWdReset() {
+  bsWdDevSel=new Set(['전체']);
+  document.querySelectorAll('#bs-wd-dev-slicer .sl-btn:not(.reset)').forEach((b,i)=>{b.classList.remove('active','multi-active');if(i===0)b.classList.add('active');});
+  updateBsWeekday();
+}
+function bsKwMetric(mode, btn) {
+  bsKwMode=mode;
+  document.querySelectorAll('#bsKwM-clk,#bsKwM-ctr').forEach(b=>b.classList.remove('active','multi-active'));
+  btn.classList.add('active');
+  updateBsKw();
+}
+
+/* ── 집계 함수 ─────────────────────────────────── */
+function bsGetFiltered() {
+  return bsFilterRows(BS_RAW, bsDevSel, bsKwSel);
+}
+function bsAggByDate(rows) {
+  const map={};
+  rows.forEach(r=>{
+    if(!map[r.date])map[r.date]={imp:0,clk:0,dow:r.dow};
+    map[r.date].imp+=r.imp;
+    map[r.date].clk+=r.clk;
+  });
+  const dates=Object.keys(map).sort();
+  return{dates, imps:dates.map(d=>map[d].imp), clks:dates.map(d=>map[d].clk), dows:dates.map(d=>map[d].dow)};
+}
+function bsAggByDow(rows) {
+  const map={0:{imp:0,clk:0},1:{imp:0,clk:0},2:{imp:0,clk:0},3:{imp:0,clk:0},4:{imp:0,clk:0},5:{imp:0,clk:0},6:{imp:0,clk:0}};
+  rows.forEach(r=>{map[r.dow].imp+=r.imp;map[r.dow].clk+=r.clk;});
+  return{imps:[0,1,2,3,4,5,6].map(d=>map[d].imp),clks:[0,1,2,3,4,5,6].map(d=>map[d].clk)};
+}
+function bsAggByKw(rows) {
+  const map={};
+  rows.forEach(r=>{
+    const k=r.kw||'기타';
+    if(!map[k])map[k]={imp:0,clk:0};
+    map[k].imp+=r.imp;map[k].clk+=r.clk;
+  });
+  return map;
+}
+function bsAggByDev(rows) {
+  const map={Mobile:{imp:0,clk:0},PC:{imp:0,clk:0}};
+  rows.forEach(r=>{if(map[r.dev]){map[r.dev].imp+=r.imp;map[r.dev].clk+=r.clk;}});
+  return map;
+}
+function bsAggElem(elemRows, yearSel, monthSel, dowSel) {
+  const filtered=elemRows.filter(r=>{
+    if(!yearSel.has('전체')&&!yearSel.has(r.year))return false;
+    if(!monthSel.has('전체')&&!monthSel.has(r.month))return false;
+    if(!dowSel.has('전체')&&!dowSel.has(r.dow))return false;
+    return true;
+  });
+  const map={};
+  filtered.forEach(r=>{
+    const k=r.elem||'기타';
+    if(!map[k])map[k]=0;
+    map[k]+=r.clk;
+  });
+  return map;
+}
+
+/* ── 업데이트 함수 ────────────────────────────────── */
+function bsUpdateKPI(rows) {
+  const totalImp=rows.reduce((a,r)=>a+r.imp,0);
+  const totalClk=rows.reduce((a,r)=>a+r.clk,0);
+  const devMap=bsAggByDev(rows);
+  const ctr=totalImp>0?(totalClk/totalImp*100).toFixed(2):'0.00';
+  const ctrPc=devMap.PC.imp>0?(devMap.PC.clk/devMap.PC.imp*100).toFixed(2):'0.00';
+  const ctrMo=devMap.Mobile.imp>0?(devMap.Mobile.clk/devMap.Mobile.imp*100).toFixed(2):'0.00';
+  const kwCount=new Set(rows.map(r=>r.kw)).size;
+  // Get period range
+  const dates=rows.map(r=>r.date).filter(Boolean).sort();
+  const periodStr=dates.length?dates[0].replace(/-/g,'/')+'~'+dates[dates.length-1].replace(/-/g,'/'):'-';
+
+  document.getElementById('kv-bs-imp').textContent=totalImp.toLocaleString();
+  document.getElementById('kv-bs-imp-sub').textContent='PC '+devMap.PC.imp.toLocaleString()+' / MO '+devMap.Mobile.imp.toLocaleString();
+  document.getElementById('kv-bs-clk').textContent=totalClk.toLocaleString();
+  document.getElementById('kv-bs-clk-sub').textContent='PC '+devMap.PC.clk.toLocaleString()+' / MO '+devMap.Mobile.clk.toLocaleString();
+  document.getElementById('kv-bs-ctr').textContent=ctr+'%';
+  document.getElementById('kv-bs-ctr-sub').innerHTML='<span class="ach g">PC '+ctrPc+'%</span><span class="ach b">MO '+ctrMo+'%</span>';
+  document.getElementById('kv-bs-cpc').textContent='—';
+  document.getElementById('kv-bs-kw').textContent=kwCount+'개';
+  document.getElementById('kv-bs-period').textContent=periodStr;
+}
+
+function updateBsDaily() {
+  if(!bsDailyChart)return;
+  const rows=bsGetFiltered();
+  const{dates,imps,clks,dows}=bsAggByDate(rows);
+  const ctrs=imps.map((v,j)=>v>0?+(clks[j]/v*100).toFixed(2):0);
+  const labels=dates.map(d=>{const p=d.split('-');return p[1]+'/'+p[2];});
+  const isWE=dows.map(d=>d===5||d===6);
+  bsDailyChart.data.labels=labels;
+  bsDailyChart.data.datasets[0].data=imps;
+  bsDailyChart.data.datasets[0].backgroundColor=isWE.map(w=>w?C.AA:C.BA);
+  bsDailyChart.data.datasets[0].borderColor=isWE.map(w=>w?C.AMBER:C.BLUE);
+  bsDailyChart.data.datasets[1].data=ctrs;
+  const maxI=Math.max(...imps.filter(v=>v>0),1);
+  const maxCtr=Math.max(...ctrs.filter(v=>v>0),1);
+  bsDailyChart.options.scales.y.suggestedMax=Math.ceil(maxI*1.2);
+  bsDailyChart.options.scales.y1.suggestedMax=Math.ceil(maxCtr*1.4);
+  bsDailyChart.update();
+}
+
+function updateBsWeekday() {
+  if(!bsWdChart)return;
+  const rows=bsFilterRows(BS_RAW, bsWdDevSel, null);
+  const{imps,clks}=bsAggByDow(rows);
+  const ctrs=imps.map((v,j)=>v>0?+(clks[j]/v*100).toFixed(2):0);
+  bsWdChart.data.datasets[0].data=imps;
+  bsWdChart.data.datasets[1].data=ctrs;
+  bsWdChart.options.scales.y.suggestedMax=Math.max(...imps,1)*1.2;
+  bsWdChart.options.scales.y1.suggestedMax=Math.max(...ctrs,1)*1.5;
+  bsWdChart.update();
+}
+
+function updateBsKw() {
+  if(!bsKwChart)return;
+  const rows=bsFilterRows(BS_RAW, bsDevSel, null);
+  const kwMap=bsAggByKw(rows);
+  const kws=Object.entries(kwMap).sort((a,b)=>b[1].clk-a[1].clk).slice(0,15);
+  const nm=kws.map(k=>k[0]);
+  const cl=kws.map(k=>k[1].clk);
+  const im=kws.map(k=>k[1].imp);
+  const ct=im.map((v,i)=>v>0?+(cl[i]/v*100).toFixed(1):0);
+  bsKwChart.data.labels=nm;
+  if(bsKwMode==='clicks'){
+    bsKwChart.data.datasets[0].data=cl;
+    bsKwChart.data.datasets[0].label='클릭수';
+    bsKwChart.data.datasets[0].backgroundColor=C.PIE.slice(0,nm.length);
+  } else {
+    bsKwChart.data.datasets[0].data=ct;
+    bsKwChart.data.datasets[0].label='CTR(%)';
+    bsKwChart.data.datasets[0].backgroundColor=ct.map(v=>v>=30?C.GREEN:v>=10?C.BLUE:C.AMBER);
+  }
+  bsKwChart.update();
+}
+
+function updateBsDevDonuts(rows) {
+  const devMap=bsAggByDev(rows);
+  if(bsDevDonutI){bsDevDonutI.data.datasets[0].data=[devMap.Mobile.imp,devMap.PC.imp];bsDevDonutI.update();}
+  if(bsDevDonutC){bsDevDonutC.data.datasets[0].data=[devMap.Mobile.clk,devMap.PC.clk];bsDevDonutC.update();}
+}
+
+function updateBsElem() {
+  if(!bsElemDonut)return;
+  const elemMap=bsAggElem(BS_ELEM, bsYearSel, bsMonthSel, bsDowSel);
+  const sorted=Object.entries(elemMap).sort((a,b)=>b[1]-a[1]);
+  const labels=sorted.map(e=>{
+    const k=e[0];
+    const short={홈링크:'홈링크','홈링크.링크':'홈링크','메인콘텐츠.타이틀':'타이틀','메인콘텐츠.이미지':'이미지','메인콘텐츠.설명문구[1]':'설명문구[1]','메인콘텐츠.섬네일[2].링크':'썸네일[2]','메인콘텐츠.섬네일[1].링크':'썸네일[1]','메인콘텐츠.섬네일[3].링크':'썸네일[3]','버튼.3개.버튼[1].텍스트':'버튼[1]','버튼.3개.버튼[2].텍스트':'버튼[2]','버튼.3개.버튼[3].텍스트':'버튼[3]','메인콘텐츠.서브타이틀':'서브타이틀','메인콘텐츠.메인이미지.링크':'메인이미지','메인콘텐츠.메인텍스트.타이틀':'메인텍스트','메인콘텐츠.설명문구[2]':'설명문구[2]','메인콘텐츠.서브링크[1].텍스트':'서브링크[1]','메인콘텐츠.서브링크[2].텍스트':'서브링크[2]','메인콘텐츠.서브링크[3].텍스트':'서브링크[3]'};
+    return short[k]||k.split('.').pop()||k;
+  });
+  const vals=sorted.map(e=>e[1]);
+  bsElemDonut.data.labels=labels;
+  bsElemDonut.data.datasets[0].data=vals;
+  bsElemDonut.update();
+}
+
+function updateBsTable(rows) {
+  const tbody=document.getElementById('bs-kw-tbody');
+  if(!tbody)return;
+  const kwMap=bsAggByKw(rows);
+  const totalImp=Object.values(kwMap).reduce((a,v)=>a+v.imp,0);
+  const totalClk=Object.values(kwMap).reduce((a,v)=>a+v.clk,0);
+  const sorted=Object.entries(kwMap).sort((a,b)=>b[1].imp-a[1].imp);
+
+  const KW_CAT={'리쥬란효과':'대표','리쥬란정품인증':'정품/인증','리쥬란인증':'정품/인증','리쥬란정품':'정품/인증','리쥬란NFC':'정품/인증','리쥬란정품이벤트':'정품/인증','리쥬란정품인증이벤트':'정품/인증','리쥬란정품인증혜택':'정품/인증','리쥬란스킨부스터':'시술/효과','리쥬란주사':'시술/효과','리쥬란시술':'시술/효과','리쥬란효능':'시술/효과','리쥬란톤업부스터':'시술/효과','리쥬란이벤트':'이벤트','리쥬란경품':'이벤트','리쥬란추첨':'이벤트','리쥬란김세정':'모델','김세정리쥬란':'모델','김세정스킨부스터':'모델','리쥬란병원화장품':'기타','리쥬란병원용화장품':'기타'};
+  const CAT_COLOR={'대표':'#3a6cf4','정품/인증':'#0ca86f','시술/효과':'#f59e0b','이벤트':'#ef4444','모델':'#8b5cf6','기타':'#64748b'};
+  const CAT_BG={'대표':'#eff6ff','정품/인증':'#f0fdf4','시술/효과':'#fffbeb','이벤트':'#fef2f2','모델':'#f5f3ff','기타':'#f8fafc'};
+  const avgCtr=totalImp>0?(totalClk/totalImp*100):0;
+
+  const rows_html=sorted.map(([kw,v],i)=>{
+    const pct=totalImp>0?(v.imp/totalImp*100):0;
+    const ctr=v.imp>0?(v.clk/v.imp*100):0;
+    const cat=KW_CAT[kw]||'기타';
+    const cc=CAT_COLOR[cat]; const cb=CAT_BG[cat];
+    const ctrCol=ctr>=avgCtr*1.2?'#0ca86f':ctr<avgCtr*0.5?'#ef4444':'#3a6cf4';
+    const ctrBg=ctr>=avgCtr*1.2?'#f0fdf4':ctr<avgCtr*0.5?'#fef2f2':'#eff6ff';
+    const barW=Math.max(pct,0.3).toFixed(1);
+    const pctBar='<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;background:#e9ecef;border-radius:3px;height:6px;min-width:60px"><div style="width:'+barW+'%;background:#3a6cf4;height:6px;border-radius:3px"></div></div><span style="font-size:11px;color:var(--text2);min-width:36px;text-align:right">'+pct.toFixed(1)+'%</span></div>';
+    const bgRow=i%2===0?'#fff':'#fafbfc';
+    return '<tr style="background:'+bgRow+'">'
+      +'<td style="padding:10px 16px;font-weight:600;color:var(--text)">'+kw+'</td>'
+      +'<td style="padding:10px 16px;text-align:right;font-variant-numeric:tabular-nums">'+v.imp.toLocaleString()+'</td>'
+      +'<td style="padding:10px 16px;min-width:140px">'+pctBar+'</td>'
+      +'<td style="padding:10px 16px;text-align:right;font-variant-numeric:tabular-nums">'+v.clk.toLocaleString()+'</td>'
+      +'<td style="padding:10px 16px;text-align:right"><span style="background:'+ctrBg+';color:'+ctrCol+';font-weight:700;padding:2px 8px;border-radius:20px;font-size:11px">'+ctr.toFixed(2)+'%</span></td>'
+      +'<td style="padding:10px 16px"><span style="background:'+cb+';color:'+cc+';font-weight:700;padding:2px 8px;border-radius:20px;font-size:10.5px;border:1px solid '+cc+'33">'+cat+'</span></td>'
+      +'</tr>';
+  }).join('');
+
+  const tot_row='<tr class="tot">'
+    +'<td style="padding:10px 16px">합계</td>'
+    +'<td style="padding:10px 16px;text-align:right">'+totalImp.toLocaleString()+'</td>'
+    +'<td style="padding:10px 16px">100%</td>'
+    +'<td style="padding:10px 16px;text-align:right">'+totalClk.toLocaleString()+'</td>'
+    +'<td style="padding:10px 16px;text-align:right"><span style="font-weight:800">'+avgCtr.toFixed(2)+'%</span></td>'
+    +'<td style="padding:10px 16px">—</td>'
+    +'</tr>';
+
+  tbody.innerHTML=rows_html+tot_row;
+
+  // 인사이트 업데이트
+  const ins=document.getElementById('bs-insight');
+  if(ins&&sorted.length>0){
+    const top3=sorted.slice(0,3).map(([kw,v])=>kw+'('+( totalImp>0?(v.imp/totalImp*100).toFixed(0):0)+'%)').join(' · ');
+    const eligible=sorted.filter(function(e){return e[1].imp>100;});
+    const topCtr=eligible.sort(function(a,b){return (b[1].clk/b[1].imp)-(a[1].clk/a[1].imp);})[0];
+    const topCtrTxt=topCtr?' | CTR 최고: '+topCtr[0]+' ('+(topCtr[1].clk/topCtr[1].imp*100).toFixed(2)+'%)':'';
+    ins.textContent='📌 노출 상위: '+top3+topCtrTxt;
+  }
+}
+
+function bsUpdateAll() {
+  const rows=bsGetFiltered();
+  bsUpdateKPI(rows);
+  updateBsDaily();
+  updateBsWeekday();
+  updateBsKw();
+  updateBsDevDonuts(rows);
+  updateBsElem();
+  updateBsTable(rows);
+}
+
+
+function initAllCharts(){
+  /* 브랜드검색 일별 */
+  const bsCtx=document.getElementById('cBsDaily');
+  if(bsCtx){
+    bsDailyChart=new Chart(bsCtx,{type:'bar',data:{labels:[],datasets:[
+      {label:'노출수',data:[],backgroundColor:[],borderColor:[],borderWidth:1,borderRadius:2,yAxisID:'y'},
+      {label:'CTR(%)',data:[],type:'line',borderColor:C.GREEN,backgroundColor:'transparent',pointRadius:3,pointBackgroundColor:C.GREEN,yAxisID:'y1',tension:0.35,borderWidth:2}
+    ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:10}}},
+      scales:{
+        y:{position:'left',grid:{color:'#f1f5f9'},ticks:{font:{size:10}},suggestedMax:1000,min:0,title:{display:true,text:'노출수',font:{size:10}}},
+        y1:{position:'right',min:0,suggestedMax:20,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>v+'%'},title:{display:true,text:'CTR',font:{size:10}}}
+      }}});
+  }
+
+  /* 브랜드검색 요일별 */
+  const wdCtx=document.getElementById('cBsWeekday');
+  if(wdCtx){
+    bsWdChart=new Chart(wdCtx,{type:'bar',data:{labels:['월','화','수','목','금','토','일'],datasets:[
+      {label:'노출수',data:[0,0,0,0,0,0,0],backgroundColor:[C.BA,C.BA,C.BA,C.BA,C.BA,C.AA,C.AA],borderColor:[C.BLUE,C.BLUE,C.BLUE,C.BLUE,C.BLUE,C.AMBER,C.AMBER],borderWidth:1,borderRadius:2,yAxisID:'y'},
+      {label:'CTR(%)',data:[0,0,0,0,0,0,0],type:'line',borderColor:C.GREEN,backgroundColor:'transparent',pointRadius:4,pointBackgroundColor:C.GREEN,yAxisID:'y1',tension:0.3,borderWidth:2}
+    ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:10}}},
+      scales:{
+        y:{position:'left',grid:{color:'#f1f5f9'},ticks:{font:{size:10}},suggestedMax:1000,min:0},
+        y1:{position:'right',min:0,suggestedMax:20,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>v+'%'}}
+      }}});
+  }
+
+  /* 브랜드검색 키워드 바 */
+  const kwCtx=document.getElementById('cBsKwBar');
+  if(kwCtx){bsKwChart=new Chart(kwCtx,{type:'bar',data:{labels:[],datasets:[{label:'클릭수',data:[],backgroundColor:[],borderRadius:3}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'#f1f5f9'},ticks:{font:{size:10}}},y:{ticks:{font:{size:10}}}}}});}
+
+  /* 브랜드검색 도넛들 */
+  const mkD=(id,lbl,dat,cutout,legPos)=>{
+    const el=document.getElementById(id);if(!el)return null;
+    const opts={cutout:cutout||'62%',responsive:false,plugins:{legend:{display:!!legPos,position:legPos||'right',labels:{font:{size:10},boxWidth:10,padding:5}},tooltip:{callbacks:{label:ctx=>{const t=dat.reduce((a,b)=>a+b,0);return ctx.label+': '+ctx.parsed.toLocaleString()+' ('+((ctx.parsed/t)*100).toFixed(1)+'%)';}}}}}; 
+    return new Chart(el,{type:'doughnut',data:{labels:lbl,datasets:[{data:dat,backgroundColor:C.PIE,borderWidth:2,borderColor:'#fff'}]},options:opts});
+  };
+  const mkDynDonut=(id,lbl,dat)=>{
+    const el=document.getElementById(id);if(!el)return null;
+    return new Chart(el,{type:'doughnut',data:{labels:lbl,datasets:[{data:dat,backgroundColor:C.PIE,borderWidth:2,borderColor:'#fff'}]},
+      options:{cutout:'60%',responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:11,padding:7}},
+          tooltip:{callbacks:{label:ctx=>{const t=ctx.chart.data.datasets[0].data.reduce((a,b)=>a+b,0);return ctx.label+': '+ctx.parsed.toLocaleString()+' ('+(t>0?(ctx.parsed/t*100).toFixed(1):0)+'%)';}}}}}});
+  };
+  bsDevDonutI=mkDynDonut('cBsDevImps',['Mobile','PC'],[0,0]);
+  bsDevDonutC=mkDynDonut('cBsDevClk', ['Mobile','PC'],[0,0]);
+  const elemEl=document.getElementById('cBsElem');
+  if(elemEl){
+    bsElemDonut=new Chart(elemEl,{type:'doughnut',data:{labels:[],datasets:[{data:[],backgroundColor:C.PIE,borderWidth:2,borderColor:'#fff'}]},
+      options:{cutout:'50%',responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{position:'right',labels:{font:{size:11},boxWidth:11,padding:7}},
+          tooltip:{callbacks:{label:ctx=>{const t=bsElemDonut.data.datasets[0].data.reduce((a,b)=>a+b,0);return ctx.label+': '+ctx.parsed+' ('+(t>0?(ctx.parsed/t*100).toFixed(1):0)+'%)';}}}}}});
+  }
+
+  /* 초기 데이터 로드 */
+  bsUpdateAll();
+
+  /* 디지털 일별 */
+  const digCtx=document.getElementById('cDigDaily');
+  if(digCtx){
+    const initMax=Math.max(...DIG.통합.imps);
+    digChart=new Chart(digCtx,{type:'bar',
+    data:{labels:DIG_DAYS,datasets:[
+      {label:'노출수',data:DIG.통합.imps,backgroundColor:DIG.통합.imps.map(()=>C.BA),borderColor:C.BLUE,borderWidth:1,borderRadius:2,yAxisID:'y'}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',display:false,labels:{font:{size:11},boxWidth:10}},
+               tooltip:{callbacks:{label:ctx=>{const v=ctx.parsed.y;return ctx.dataset.label+(ctx.dataset.yAxisID==='y1'?': '+v.toFixed(2)+'%':': '+Math.round(v).toLocaleString());}}}} ,
+      scales:{
+        y:{position:'left',grid:{color:'#f1f5f9'},ticks:{font:{size:10}},suggestedMax:initMax*1.2,min:0,title:{display:true,text:'노출수',font:{size:10}}},
+        y1:{position:'right',display:true,min:0,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>v+'%'},title:{display:false,text:'%'}}
+      }}});
+  }
+
+  /* TV 일별 GRP + 누적 Reach */
+  const tvDCtx=document.getElementById('cTvDaily');
+  if(tvDCtx){
+    const initGrp=[25.901,26.675,32.985,15.622,9.887,17.154,16.730,20.165,29.462,32.584];
+    tvDailyChart=new Chart(tvDCtx,{type:'bar',data:{labels:TV_DAYS,datasets:[
+      {label:'일별 Eq.GRP',data:initGrp,backgroundColor:C.BA,borderColor:C.BLUE,borderWidth:1,borderRadius:2,yAxisID:'y'},
+      {label:'누적 Reach1+%',data:TV_CUME_R1,type:'line',borderColor:C.GREEN,backgroundColor:'transparent',fill:false,pointRadius:3,pointBackgroundColor:C.GREEN,yAxisID:'y1',tension:0.3,borderWidth:2}
+    ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:10}}},
+      scales:{y:{position:'left',grid:{color:'#f1f5f9'},ticks:{font:{size:10}},suggestedMax:Math.max(...initGrp)*1.2,min:0,title:{display:true,text:'GRP',font:{size:10}}},
+              y1:{position:'right',min:0,suggestedMax:Math.max(...TV_CUME_R1)*1.15,grid:{drawOnChartArea:false},ticks:{font:{size:10},callback:v=>v+'%'},title:{display:true,text:'Reach1+%',font:{size:10}}}}}});
+  }
+
+  /* TV 채널 도넛 */
+  const tvDntCtx=document.getElementById('cTvDonut');
+  if(tvDntCtx){tvDonutChart=new Chart(tvDntCtx,{type:'doughnut',data:{labels:[],datasets:[{data:[],backgroundColor:C.PIE,borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,cutout:'45%',plugins:{legend:{position:'right',labels:{font:{size:10},boxWidth:10,padding:6}},tooltip:{callbacks:{label:ctx=>ctx.label+': '+ctx.parsed}}}}});updateTvDonut();}
+}
+
+window.addEventListener('load',()=>{setTimeout(animBars,200);setTimeout(initAllCharts,350);});
+
+</script>
+</body>
+</html>
